@@ -1,0 +1,100 @@
+/*general*/
+	body{
+		font-family:calibri,sans-serif;
+	}
+
+
+	img{
+		max-width:100%;
+		height:auto;
+	}
+
+
+	section .heading{
+		text-align:center;
+	}
+		
+	ul
+	{
+		list-style:none;
+	}
+
+
+/*Mise en page de la barre de navigation*/
+
+		.logo{
+			height:75px;
+			margin-top:-30px;
+			
+		}
+
+		.navbar
+		{
+			font-size:17px;
+			letter-spacing:2px;
+            margin-top: 10px;
+			text-indent:8px;
+			text-transform:uppercase;
+			font-weight:bold;
+			font-family:calibri,sans-serif;
+			background-color:white;
+            height: 80px;
+		}
+		
+		.navbar .navbar-nav{
+			display:inline-block; 
+			float:none;
+			vertical-align:top;
+		}
+		
+		.navbar .navbar-collapse
+		{
+			text-align:center; 
+		}
+		.navbar li a
+		{
+			color:black !important; 
+		}
+
+		.navbar .dropdown-menu li a:hover, .navbar .dropdown-menu li.active a
+		{
+			color:darkgray !important;
+			background-color :white !important;
+			border-bottom:none;
+		}
+
+		.navbar .dropdown-menu  .style
+		{
+			display:inline-block; 
+			float:none;
+			text-align:center;
+			font-weight:bold;
+            letter-spacing:1px;
+		}
+		
+		.navbar-nav li a:hover{
+			
+			color: darkgray !important;
+			border-bottom:1px solid darkgray;
+			background-color : white !important;
+		}
+
+		.navbar-nav li.active a{
+			
+			color: darkgray !important;
+			background-color :white !important;
+		}
+		.navbar-defaut .navbar-toggle{
+			border-style:none;
+		}
+		
+		
+		.icon-bar{
+			background-color: black !important;
+		}
+		
+		#mynavbar .glyphicon
+		{
+			font-size:10px;
+			color:black;
+		}
