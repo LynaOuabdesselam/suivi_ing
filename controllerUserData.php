@@ -25,7 +25,7 @@ if(isset($_POST['signup'])){
         $status = "notverified";
         $insert_data = "INSERT INTO user (name, email, password, code, status)
                         values('$name', '$email', '$encpass', '$code', '$status')";
-        $data_check = mysqli_query($con, $insert_data);
+        $data_check = mysqli_query($con, $insert_data); 
         if($data_check){
             $subject = "Email Verification Code";
             $message = "Your verification code is $code";

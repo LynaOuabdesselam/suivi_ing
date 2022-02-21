@@ -65,7 +65,7 @@
           <nav class="navbar navbar-inverse">
             <div class="container">
               <div class="navbar-header">
-              <a class="navbar-brand" href="#">Online academic follow-up</a>
+              <a class="navbar-brand" href="index.php?page=home">Online academic follow-up</a>
               </div>
               <ul class="nav navbar-inverse">
                 <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" 
