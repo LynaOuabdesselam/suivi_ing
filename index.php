@@ -91,7 +91,7 @@
               if (isset($_GET['page'])) {
                 $page = $_GET['page'].'.php';
               }else{
-                $page = 'home.php';
+                $page = 'index.php?page=home';
               }
 
               if (file_exists($page)) {

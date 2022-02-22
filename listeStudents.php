@@ -1,7 +1,7 @@
  <?php require_once "controllerUserData.php"; ?>
 
     <ol class="breadcrumb">
-      <li class="breadcrumb-item" aria-current="page"><a href="home.php">Dashboard </a></li>
+      <li class="breadcrumb-item" aria-current="page"><a href="index.php?page=home">Dashboard </a></li>
       <li class="breadcrumb-item active" aria-current="page"> Telecommunication 3rd year </li>
     </ol>
 
