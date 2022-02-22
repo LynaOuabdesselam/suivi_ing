@@ -23,11 +23,9 @@ if($email != false && $password != false){
 ?>
 
 <?php
-echo "<p> ---------1----------- </p>";
+
 include 'calendar.php';
-echo "<p> ---------2---------- </p>";
 $calendar = new Calendar('2022-02-03');
-echo "<p> ---------3---------- </p>";
 ?>
 
 <?php 
