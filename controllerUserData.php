@@ -86,9 +86,11 @@ if(isset($_POST['signup'])){
                 $_SESSION['email'] = $email;
                 $status = $fetch['status'];
                 if($status == 'verified'){
+                    echo "<p> ************** </p>";
                   $_SESSION['email'] = $email;
                   $_SESSION['password'] = $password;
                     header('location: index.php?page=home');
+                    echo "<p> ------------------- </p>";
                 }else{
                     $info = "It's look like you haven't still verify your email - $email";
                     $_SESSION['info'] = $info;
