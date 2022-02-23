@@ -1,5 +1,6 @@
 <?php
 class Telecom2 {
+    private $nom, $prenom, $idEtudiant, $dettes, $credits;
 
     //Année
     private $anneeMoyenne, $anneeResultat, $anneeTOEIC;
