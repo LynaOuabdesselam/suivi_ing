@@ -133,5 +133,10 @@ class Telecom2 {
     private $commentaires;
     private $dettesSpeT2, $remarques;
 
+
+    public function __construct() {
+       
+    }
+
 }
 ?>

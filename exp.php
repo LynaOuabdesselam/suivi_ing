@@ -24,3 +24,32 @@ $calendar->add_event('Holiday', '2021-02-16', 7);
 		</div>
 	</body>
 </html>
+
+
+<?php
+class Calendar {
+
+    //Année
+    private $anneeMoyenne, $anneeResultat, $anneeTOEIC;
+
+    //Niveau Anglais
+    private $TOEICblanc1, $TOEICblanc2, $TOEICofficiel, $anglaisResultats;
+
+
+    //UE Outils Informatique2
+    private $bddTP, $bddCoef, $bdd;
+    //private $bddNoteMin, $bddECTS;
+
+    private $semP, $sem$TP, $semCoef, $sem,
+    //private $semNoteMin, $semECTS;
+
+    private $ueOutilsInformatiques2, $ueOutilsInformatiques2Reultats;
+    //private $ueOutilsInformatiques2NoteMin, $ueOutilsInformatiques2ECTS;
+
+
+    //UE Telecomunnication 2
+
+    private 
+
+}
+?>

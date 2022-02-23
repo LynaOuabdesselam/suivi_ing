@@ -1,4 +1,4 @@
- <?php require_once "controllerUserData.php"; ?>
+ <?php require_once "controllerUserData.php";?>
 
     <ol class="breadcrumb">
       <li class="breadcrumb-item" aria-current="page"><a href="index.php?page=home">Dashboard </a></li>
@@ -91,6 +91,22 @@
         ?>
     </tbody>
   </table>
+
+    <!-- ************************ -->    
+    </br>
+    <div class="outer-container rigth">
+      <form action="" method="post"
+        name="frmExcelImport" id="frmExcelImport" enctype="multipart/form-data">
+        <div>
+          <label>Choose ExcelFile</label> 
+          <input type="file" name="file" id="file" accept=".csv, .xls,.xlsx">
+          <button type="submit" id="submit" name="import" class="btn-submit">Import</button> 
+        </div>
+      </form>
+    </div>
+    <div id="response" class="<?php if(!empty($type)) { echo $type . " display-block"; } ?>"><?php if(!empty($message)) { echo $message; } ?></div>
+    </br>
+    <!-- ************************ -->  
 <script type="text/javascript">
   function confirmationDelete(anchor)
   {
