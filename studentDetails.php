@@ -3,7 +3,7 @@
 
     function connectToBD(){ //Connexion à la Bdd
 
-        $objetPdo = new PDO('mysql:host=localhost;dbname=pvT2', 'root', '');
+        $objetPdo = new PDO('mysql:host=localhost;dbname=applietudiant2', 'root', '');
         if (!$objetPdo) echo "Echec de connexion à la base de données";
         $objetPdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         return $objetPdo;
@@ -34,124 +34,6 @@
         return null;
     }
 
-    $idStage = GetRequest('idStage',1);
-    $paramAction=GetRequest("paramAction","");
-
-    function getInfosStage($idStage){
-        $objetPdo=connectToBD();
-        $sql="SELECT * from stage where idStage=$idStage";
-        // Requete
-
-        // Execution de la requete
-
-        $stmt = $objetPdo->prepare($sql);
-        $executeISOk = $stmt->execute();
-
-        // Recuperation des resultats
-
-        $infos = $stmt->fetchAll();
-        if (count($infos) > 0){
-
-            return $infos[0];
-        }
-
-        return null;
-    }
-
-    $IdentifiantLabo = GetRequest('$IdentifiantLabo',125);
-    $paramAction=GetRequest("paramAction","");
-    function getInfosTuteurac($IdentifiantLabo){
-        $objetPdo=connectToBD();
-        $sql="SELECT * from tuteuracademique where IdentifiantLabo=$IdentifiantLabo";
-        // Requete
-
-        // Execution de la requete
-
-        $stmt = $objetPdo->prepare($sql);
-        $executeISOk = $stmt->execute();
-
-
-        // Recuperation des resultats
-
-        $infos = $stmt->fetchAll();
-        if (count($infos) > 0){
-
-            return $infos[0];
-        }
-
-        return null;
-    }
-
-    $idTuteur = GetRequest('$idTuteur',1);
-    $paramAction=GetRequest("paramAction","");
-    function getInfosTuteurEn($idTuteur){
-        $objetPdo=connectToBD();
-        $sql="SELECT * from tuteurentreprise where idTuteur=$idTuteur";
-        // Requete
-
-        // Execution de la requete
-
-        $stmt = $objetPdo->prepare($sql);
-        $executeISOk = $stmt->execute();
-
-
-        // Recuperation des resultats
-
-        $infos = $stmt->fetchAll();
-        if (count($infos) > 0){
-
-            return $infos[0];
-        }
-
-        return null;
-    }
-
-    $idDrh = GetRequest('$idDrh',1);
-    $paramAction=GetRequest("paramAction","");
-    function getInfosDrh($idDrh){
-        $objetPdo=connectToBD();
-        $sql="SELECT * from drh where idDrh=$idDrh";
-        // Requete
-
-        // Execution de la requete
-
-        $stmt = $objetPdo->prepare($sql);
-        $executeISOk = $stmt->execute();
-
-        // Recuperation des resultats
-
-        $infos = $stmt->fetchAll();
-        if (count($infos) > 0){
-
-            return $infos[0];
-        }
-
-        return null;
-    }
-
-    $idEntreprise = GetRequest('$idEntreprise',1);
-    $paramAction=GetRequest("paramAction","");
-    function getInfosEntreprise($idEntreprise){
-        $objetPdo=connectToBD();
-        $sql="SELECT * from entreprise where idEntreprise=$idEntreprise";
-        // Requete
-
-        // Execution de la requete
-
-        $stmt = $objetPdo->prepare($sql);
-        $executeISOk = $stmt->execute();
-
-
-        // Recuperation des resultats
-
-        $infos = $stmt->fetchAll();
-        if (count($infos) > 0){
-
-            return $infos[0];
-        }
-
-        return null;
-    }
 
     function updateTable($table, $new_info, $where,$objetPdo=null){
         if ($objetPdo==null)
@@ -227,49 +109,6 @@
 
     }
 
-
-    function buildInput($libelle,$editable, $idInput, $value, $size='',$maxlength='', $extra='') {
-        if ($libelle)
-            echo "<tr><td>$libelle</td><td>";
-        if ($editable) {
-
-            echo  "<input type='text'  name='$idInput'  id='$idInput' value=\"" . HTMLEncode($value) ."\""  ;
-
-            if( $size!='')   {
-
-                echo   " size='$size' ";
-
-            }
-
-
-            if( $maxlength!='')
-                echo   " maxlength='$maxlength' ";
-
-            echo $extra;
-            echo " />";
-        }else {
-
-            echo  HTMLEncode($value);
-
-        }
-        if ($libelle)
-            echo "</td></tr>
-    ";
-
-    }
-
-    function HTMLEncode($str,$code=0)
-    {
-        $ret=htmlspecialchars($str, ENT_QUOTES);
-
-        return $ret;
-
-    }
-
-    if ($paramAction=="valider1") {
-        updateForm1($idEtudiant);
-    }
-
 ?>
 
 <head>
@@ -280,71 +119,13 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-
-    <script>
-        function annuler(){
-            document.form1.paramAction.value='annuler';
-            document.form1.submit();
-            
-            }
-
-
-
-            function editer(numform){
-            document.form1.paramAction.value='editer'+numform;
-            document.form1.submit();
-            
-            }
-            
-            
-            function valider1()
-            {
-        
-            var valeur1 = $("#EtudiantMail").val(); 
-            var valeur2 = $("#EtudiantTel").val(); 
-            var valeur3 = $("#EtudiantAdresse").val();
-            var valeur4 = $("#EtudiantCP").val();
-            
-            if(isNaN(valeur1))
-            {
-                alert("Le format du mail du Etudiant n'est pas respecte");
-                $("#EtudiantTel").focus(); 
-                
-                return false;
-            }
-            
-            if(isNaN(valeur2))
-            {
-                alert("Le format du numero de telephone du Etudiant n'est pas respecte");
-                $("#EtudiantFax").focus(); 
-                
-                return false;
-            }
-            
-            if(isNaN(valeur4))
-            {
-                alert("Le format du numero de code postal du Etudiant n'est pas respecte");
-                $("#EtudiantCP").focus(); 
-                
-                return false;
-            }
-            document.form1.paramAction.value='valider1';
-            document.form1.submit();
-
-            }
-    </script>
 </head>
 
 
 <?php
     $infos=getInfosEtudiant($idEtudiant);
-    $infostage=getInfosStage($idStage);
-    $infostuteuraca=getInfosTuteurac($IdentifiantLabo);
-    $infostuteur=getInfosTuteurEn($idTuteur);
-    $infosDrh=getInfosDrh($idDrh);
-    $infosEnt = getInfosEntreprise($idEntreprise);
-
 ?>
+
 <body>
     <hr>
     <div class="container bootstrap snippet">
@@ -396,69 +177,6 @@
 
                 </ul>
 
-
-                <ul class="list-group">
-                    <li class="list-group-item text-muted">Contact d'urgence et assurance<i class="fa fa-dashboard fa-1x"></i></li>
-                    <li class="list-group-item text-right"><span class="pull-left"><strong>Nom</strong></span>
-                        <?php
-                        $editable=$paramAction=="editer1";
-                        buildInput("", $editable, 'ContactUrgenceNom', $infos['ContactUrgenceNom'], 5,5,"class='form-control'")
-                        ?>
-                    </li>
-                    <li class="list-group-item text-right"><span class="pull-left"><strong>Telephone</strong></span>
-                        <?php
-                        $editable=$paramAction=="editer1";
-                        buildInput("", $editable, 'ContactUrgenceTel', $infos['ContactUrgenceTel'], 5,5,"class='form-control'")
-                        ?>
-                    </li>
-                    <li class="list-group-item text-right"><span class="pull-left"><strong>AssuranceNom</strong></span>
-                        <?php
-                        $editable=$paramAction=="editer1";
-                        buildInput("", $editable, 'AssuranceNom', $infos['AssuranceNom'], 5,5,"class='form-control'")
-                        ?>
-                    </li>
-                    <li class="list-group-item text-right"><span class="pull-left"><strong>AssuranceNumero</strong></span>
-                        <?php
-                        $editable=$paramAction=="editer1";
-                        buildInput("", $editable, 'AssuranceNumero', $infos['AssuranceNumero'], 5,5,"class='form-control'")
-                        ?>
-                    </li>
-                    <li class="list-group-item text-right"><span class="pull-left"><strong>AssuranceCaisse</strong></span>
-                        <?php
-                        $editable=$paramAction=="editer1";
-                        buildInput("", $editable, 'AssuranceCaisse', $infos['AssuranceCaisse'], 5,5,"class='form-control'")
-                        ?>
-                    </li>
-
-                </ul>
-                <ul class="list-group">
-                    <li class="list-group-item text-muted">Entreprise d'accueil<i class="fa fa-dashboard fa-1x"></i></li>
-                    <li class="list-group-item text-right"><span class="pull-left"><strong>Type</strong></span>
-                        <?php
-                        $editable=$paramAction=="editer6";
-                        buildInput("", $editable, 'Ent', $infosEnt['Ent'], 5,5,"class='form-control'")
-                        ?></li>
-                    <li class="list-group-item text-right"><span class="pull-left"><strong>Nom</strong></span>
-                        <?php
-                        $editable=$paramAction=="editer6";
-                        buildInput("", $editable, 'EntNom', $infosEnt['EntNom'], 5,5,"class='form-control'")
-                        ?>
-                    </li>
-
-                    <li class="list-group-item text-right"><span class="pull-left"><strong>Unite</strong></span>
-                        <?php
-                        $editable=$paramAction=="editer6";
-                        buildInput("", $editable, 'EntUnite', $infosEnt['EntUnite'], 5,5,"class='form-control'")
-                        ?>
-                    </li>
-                    <li class="list-group-item text-right"><span class="pull-left"><strong>Batiment</strong></span>
-                        <?php
-                        $editable=$paramAction=="editer6";
-                        buildInput("", $editable, 'EntBatiment', $infosEnt['EntBatiment'], 5,5,"class='form-control'")
-                        ?>
-                    </li>
-
-                
                 
                 
                     <li class="list-group-item text-right"><span class="pull-left"><strong>Adresse</strong></span>

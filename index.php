@@ -41,6 +41,15 @@
           text-decoration: none;
           
       }
+      a{
+        color: black;
+        cursor: pointer;
+      }
+      a:hover{
+        color: #000002;
+        text-decoration: none;
+        cursor: mouse;
+      }
       ul.dropdown-menu a{
         color: #6665ee;
       }

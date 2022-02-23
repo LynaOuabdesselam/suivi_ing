@@ -70,16 +70,16 @@
         while ($result = mysqli_fetch_array($query)) 
           {
       ?>
-            <tr>
+            <tr> 
       <?php 
-            echo '<td>'.$i.'</td>
-              <td>'.$result['EtudiantNumero'].'</td>
-              <td>'.ucwords($result['EtudiantNom']).'</td>
-              <td>'.ucwords($result['EtudiantPrenom']).'</td>
-              <td>'.$result['EtudiantDateNais'].'</td>
-              <td>'.$result['StageAnnee'].'</td>
-              <td>'.$result['EtudiantMail'].'</td>
-              <td>'.ucwords($result['EtudiantAdresse']).'</td>
+            echo '<td> <a href= "index.php?page=studentDetails&EtudiantNumero='.$result['EtudiantNumero'].'">'.$i.'</td>
+              <td> <a href= "index.php?page=studentDetail&EtudiantNumero='.$result['EtudiantNumero'].'">'.$result['EtudiantNumero'].'</td>
+              <td> <a href= "index.php?page=studentDetail&EtudiantNumero='.$result['EtudiantNumero'].'">'.ucwords($result['EtudiantNom']).'</td>
+              <td> <a href= "index.php?page=studentDetail&EtudiantNumero='.$result['EtudiantNumero'].'">'.ucwords($result['EtudiantPrenom']).'</td>
+              <td><a href= "index.php?page=studentDetails&EtudiantNumero='.$result['EtudiantNumero'].'">'.$result['EtudiantDateNais'].'</td>
+              <td><a href= "index.php?page=studentDetails&EtudiantNumero='.$result['EtudiantNumero'].'">'.$result['StageAnnee'].'</td>
+              <td><a href= "index.php?page=studentDetails&EtudiantNumero='.$result['EtudiantNumero'].'">'.$result['EtudiantMail'].'</td>
+              <td><a href= "index.php?page=studentDetails&EtudiantNumero='.$result['EtudiantNumero'].'">'.ucwords($result['EtudiantAdresse']).'</td>
               <td>
 
               &nbsp; <a class="btn btn-xs btn-danger" onclick="javascript:confirmationDelete($(this));return false;" href="index.php?page=delete&EtudiantNumero='.base64_encode($result['EtudiantNumero']).'">
@@ -94,7 +94,7 @@
 
     <!-- ************************ -->    
     </br>
-    <div class="outer-container rigth">
+    <div class="outer-container">
       <form action="" method="post"
         name="frmExcelImport" id="frmExcelImport" enctype="multipart/form-data">
         <div>
