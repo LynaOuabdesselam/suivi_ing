@@ -30,7 +30,7 @@ if(isset($_POST['signup'])){
             $subject = "Email Verification Code";
             $message = "Your verification code is $code";
             $sender = "From: shahiprem7890@gmail.com";
-            if(mail($email, $subject, $message, $sender)){
+            if(!mail($email, $subject, $message, $sender)){
                 $info = "We've sent a verification code to your email - $email";
                 $_SESSION['info'] = $info;
                 $_SESSION['email'] = $email;
