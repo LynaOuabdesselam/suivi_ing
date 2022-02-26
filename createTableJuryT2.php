@@ -1,5 +1,5 @@
 <?php 
-  $con = mysqli_connect('localhost', 'root', '', 'juryT2')
+  $con = mysqli_connect('localhost', 'root', '', 'pvT2');
   if(mysqli_connect_error())
       echo "Connection Error.";
   else
@@ -17,7 +17,7 @@
   anneeMoyenne FLOAT(4,2) CHECK (anneeMoyenne <= 20),
   anneeResultat VARCHAR(7),
   anneeTOEIC INT(3) CHECK (anneeTOEIC <= 990), 
-  TOEICblanc1INT(3) CHECK (anneeTOEIC <= 990),  
+  TOEICblanc1 INT(3) CHECK (anneeTOEIC <= 990),  
   TOEICblanc2 INT(3) CHECK (anneeTOEIC <= 990), 
   TOEICofficiel INT(3) CHECK (anneeTOEIC <= 990), 
   anglaisResultats VARCHAR(3),
@@ -148,7 +148,8 @@
   s4Resultat VARCHAR(5), 
   commentaires VARCHAR(30), 
   dettesSpeT2 VARCHAR(30),  
-  remarques VARCHAR(30)
+  remarques VARCHAR(30),
+  reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
   )";
 
   if ($con->query($sql) === TRUE) {
