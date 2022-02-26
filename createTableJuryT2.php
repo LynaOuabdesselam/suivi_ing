@@ -1,5 +1,5 @@
 <?php 
-  $con = mysqli_connect('localhost', 'root', '', 'pvT2')
+  $con = mysqli_connect('localhost', 'root', '', 'juryT2')
   if(mysqli_connect_error())
       echo "Connection Error.";
   else
@@ -148,8 +148,7 @@
   s4Resultat VARCHAR(5), 
   commentaires VARCHAR(30), 
   dettesSpeT2 VARCHAR(30),  
-  remarques VARCHAR(30),
-  reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  remarques VARCHAR(30)
   )";
 
   if ($con->query($sql) === TRUE) {

@@ -67,7 +67,6 @@
 
   </head>
   <body>
-
     <div class="container clearfix">
       <div class="row">
         <div class="col-sm-12">

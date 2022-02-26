@@ -53,7 +53,7 @@ class Telecom2 {
     private $ueCultureEntreprise, $ueCultureEntrepriseResultat;
     //private $ueCultureEntrepriseNoteMin, $ueCultureEntrepriseECTS;
 
-    //S1 Resultats
+    //S3 Resultats
     private $s3Moyenne ,$s3Resultat;
     //private $s3MoyenneNoteMin ,$s3MoyenneECTS;
     /*************************************************************************************************************/
