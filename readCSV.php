@@ -18,12 +18,13 @@ if(($handle = fopen("juryT2.csv", "r")) !== FALSE)
 
     for (i=0 ; i < count($csv); i++)
     {
-        $lineData = "";
+        $lineData = "(";
         for (j=0; j < count($csv[i]); j++)
         {
             $lineData = $lineData.",".$csv[i][j]; 
 
         }
+        $lineData = $lineData.")";
         $insert_data = "INSERT INTO juryT2 (
 
             $nom, $prenom, $idEtudiant, $dettes, $credits, $redoublants
@@ -54,7 +55,7 @@ if(($handle = fopen("juryT2.csv", "r")) !== FALSE)
             $s4Moyenne ,$s4Resultat, $commentaires, $dettesSpeT2, $remarques
 
         ) values (
-
+            $lineData;
         )";
 
         $data_check = mysqli_query($con, $insert_data); 
