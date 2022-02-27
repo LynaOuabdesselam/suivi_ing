@@ -2,6 +2,7 @@
 setLocale(LC_ALL, 'fr_BE.UTF-8');
 $csv = array();
 $i = 0;
+//if(($handle = fopen("juryT2_ubuntu.csv", "r")) !== FALSE)
 if(($handle = fopen("juryT2.csv", "r")) !== FALSE)
 {
    while(($data = fgetcsv($handle, 1000, "\t")) !== FALSE)
