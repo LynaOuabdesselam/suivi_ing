@@ -1,6 +1,6 @@
  <?php require_once "controllerUserData.php";
-       //require_once "createTableStudent.php";
-       //require_once "readCSV.php"
+       require_once "createTableStudent.php";
+       require_once "readCSV.php"
  ?>
 
     <ol class="breadcrumb">
@@ -66,7 +66,6 @@
     <tbody>
       <?php 
         $query=mysqli_query($con,'SELECT * FROM `students` ORDER BY `students`.`nom`;');
-        $i=1;
         while ($result = mysqli_fetch_array($query)) 
           {
       ?>
@@ -84,7 +83,7 @@
         ?>
             </tr>  
         <?php 
-          $i++;} 
+          } 
         ?>
     </tbody>
   </table>

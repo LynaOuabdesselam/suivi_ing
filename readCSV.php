@@ -10,7 +10,7 @@
                 if($i < 13){
                     continue;
                 }
-                if ($i > 51){
+                if ($i > 52){
                     continue;
                 }
                 $csv[] = $data;
