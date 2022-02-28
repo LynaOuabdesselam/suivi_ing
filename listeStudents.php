@@ -1,4 +1,7 @@
- <?php require_once "controllerUserData.php";?>
+ <?php require_once "controllerUserData.php";
+       //require_once "createTableStudent.php";
+       //require_once "readCSV.php"
+ ?>
 
     <ol class="breadcrumb">
       <li class="breadcrumb-item" aria-current="page"><a href="index.php?page=home">Dashboard </a></li>
@@ -52,34 +55,28 @@
   <table class="table  table-striped table-hover table-bordered" id="data" style="width:100%;">
     <thead class="thead-dark">
       <tr>
-      <th scope="col"></th>
-          <th scope="col">Student_Number</th>
+          <th scope="col">N°</th>
           <th scope="col">Name</th>
           <th scope="col">Surname</th>
-          <th scope="col">Date_of_birth</th>
-          <th scope="col">Year</th>
-          <th scope="col"> Email </th>
-          <th scope="col"> Adresse </th>
-        <th scope="col">Action</th>
+          <th scope="col">Student_Number</th>
+          <th scope="col">Action</th>
+
       </tr>
     </thead>
     <tbody>
       <?php 
-        $query=mysqli_query($con,'SELECT * FROM `etudiant` ORDER BY `etudiant`.`EtudiantNom` DESC;');
+        $query=mysqli_query($con,'SELECT * FROM `students` ORDER BY `students`.`nom`;');
         $i=1;
         while ($result = mysqli_fetch_array($query)) 
           {
       ?>
             <tr> 
       <?php 
-            echo '<td> <a href= "index.php?page=studentDetails&EtudiantNumero='.$result['EtudiantNumero'].'">'.$i.'</td>
-              <td> <a href= "index.php?page=studentDetail&EtudiantNumero='.$result['EtudiantNumero'].'">'.$result['EtudiantNumero'].'</td>
-              <td> <a href= "index.php?page=studentDetail&EtudiantNumero='.$result['EtudiantNumero'].'">'.ucwords($result['EtudiantNom']).'</td>
-              <td> <a href= "index.php?page=studentDetail&EtudiantNumero='.$result['EtudiantNumero'].'">'.ucwords($result['EtudiantPrenom']).'</td>
-              <td><a href= "index.php?page=studentDetails&EtudiantNumero='.$result['EtudiantNumero'].'">'.$result['EtudiantDateNais'].'</td>
-              <td><a href= "index.php?page=studentDetails&EtudiantNumero='.$result['EtudiantNumero'].'">'.$result['StageAnnee'].'</td>
-              <td><a href= "index.php?page=studentDetails&EtudiantNumero='.$result['EtudiantNumero'].'">'.$result['EtudiantMail'].'</td>
-              <td><a href= "index.php?page=studentDetails&EtudiantNumero='.$result['EtudiantNumero'].'">'.ucwords($result['EtudiantAdresse']).'</td>
+            echo '
+              <td> <a href= "index.php?page=studentDetail&idEtudiant='.$result['idEtudiant'].'">'.$result['id'].'</td>
+              <td> <a href= "index.php?page=studentDetail&idEtudiant='.$result['idEtudiant'].'">'.ucwords($result['nom']).'</td>
+              <td> <a href= "index.php?page=studentDetail&idEtudiant='.$result['idEtudiant'].'">'.ucwords($result['prenom']).'</td>
+              <td><a href= "index.php?page=studentDetails&idEtudiant='.$result['idEtudiant'].'">'.$result['idEtudiant'].'</td>
               <td>
 
               &nbsp; <a class="btn btn-xs btn-danger" onclick="javascript:confirmationDelete($(this));return false;" href="index.php?page=delete&EtudiantNumero='.base64_encode($result['EtudiantNumero']).'">
@@ -95,7 +92,7 @@
     <!-- ************************ -->    
     </br>
     <div class="outer-container">
-      <form action="" method="post"
+      <form action="readCSV.php" method="post"
         name="frmExcelImport" id="frmExcelImport" enctype="multipart/form-data">
         <div>
           <label>Choose ExcelFile</label> 
