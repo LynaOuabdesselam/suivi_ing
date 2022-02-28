@@ -1,6 +1,6 @@
  <?php require_once "controllerUserData.php";
-       require_once "createTableStudent.php";
-       require_once "readCSV.php"
+       //require_once "createTableStudent.php";
+       //require_once "readCSV.php"
  ?>
 
     <ol class="breadcrumb">
