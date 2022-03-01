@@ -12,6 +12,8 @@
         <div class="row">
             <div class="col-md-4 offset-md-4 form login-form">
                 <form action="login-user.php" method="POST" autocomplete="">
+                    <img src="css/login.png" class="login">
+                    <br>
                     <h2 class="text-center">Login Form</h2>
                     <p class="text-center">Login with your email and password.</p>
                     <?php

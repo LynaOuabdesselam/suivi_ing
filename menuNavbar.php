@@ -22,7 +22,7 @@
       nav{
           padding-left: 50px!important; 
           padding-right: 50px!important;
-          background: #6665ee;
+          background: #fff;
           font-family: 'Poppins', sans-serif;
       } 
       nav a.navbar-brand{
@@ -36,7 +36,7 @@
       }
 
       button a{
-          color: #6665ee;
+          color: #fff;
           font-weight: 500;
       }
       button a:hover{
@@ -44,7 +44,7 @@
           
       }
       ul.dropdown-menu a{
-        color: #6665ee;
+        color: #fff;
       }
       h1{
           position: absolute;
