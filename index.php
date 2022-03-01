@@ -10,7 +10,6 @@
 
     <link href="styleCal.css" rel="stylesheet" type="text/css">
     <link href="calendar.css" rel="stylesheet" type="text/css">  
-
     
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
@@ -20,26 +19,16 @@
       nav{
           padding-left: 50px!important; 
           padding-right: 50px!important;
-          background: #6665ee;
           font-family: 'Poppins', sans-serif;
       } 
       nav a.navbar-brand{
-          color: #fff;
+          color: black;
           font-size: 20px!important;
           font-weight: 500;
       }
       nav a{
         color: #fff;
         padding: 15px;;
-      }
-
-      button a{
-          color: #6665ee;
-          font-weight: 500;
-      }
-      button a:hover{
-          text-decoration: none;
-          
       }
       a{
         color: black;
@@ -51,7 +40,7 @@
         cursor: mouse;
       }
       ul.dropdown-menu a{
-        color: #6665ee;
+        color: black;
       }
       h1{
           position: absolute;
@@ -70,26 +59,27 @@
     <div class="container clearfix">
       <div class="row">
         <div class="col-sm-12">
-          <nav class="navbar navbar-inverse">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
               <div class="navbar-header">
-              <a class="navbar-brand" href="index.php?page=home">Online academic follow-up</a>
+                <a class="navbar-brand" href="index.php">
+                <img class="login" src="css/galilee.png" href="index.php" >
+                </a>
               </div>
               <ul class="nav navbar-inverse">
                 <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" 
-                      href="#"> <i class="fa fa-users"></i> Students<span class="caret"> </span></a>
+                      href="#"> <i class="fa fa-users"></i> Étudiants <span class="caret"> </span></a>
                   <ul class="dropdown-menu">
                     <li><a href="index.php?page=listeStudents"> Telecom 1</a></li>
                     <li><a href="index.php?page=listeStudents"> Telecom 2</a></li>
                     <li><a href="index.php?page=listeStudents"> Telecom 3</a></li>
                   </ul>
                 </li>
-                <li class="active"><a href="index.php?page=user-profile"> <i class="fa fa-user"></i> User </a></li>
-                <li><a href="index.php?page=formEtudiant"> <i class="fa fa-user-plus"></i> New </a></li>
-                <li><a href="index.php?page=all-users"> <i class="fa fa-users"></i> Other users </a></li>
+                <li class="active"><a href="index.php?page=user-profile"> <i class="fa fa-user"></i> Profil </a></li>
+                <li><a href="index.php?page=formEtudiant"> <i class="fa fa-plus"></i> Plus </a></li>
+                <li><a href="index.php?page=all-users"> <i class="fa fa-users"></i> Stages </a></li>
+                <li><a href="logout-user.php"> <i class="fa fa-power-off"></i> Logout </a></li>
               </ul>
-
-              <button type="button" class="btn navbar-btn"><a style="background-color: #fff; border-radius: 4px;" href="logout-user.php">Logout</a></button></li>
             </div>
           </nav>
             

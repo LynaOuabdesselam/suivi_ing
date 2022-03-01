@@ -169,7 +169,11 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-
+    <style>
+        h4 {
+         text-align: center;
+        }
+    </style>
     <script>
         function annuler(){
             document.form1.paramAction.value='annuler';
@@ -232,85 +236,25 @@
     <hr>
     <div class="container bootstrap snippet">
         <div class="row">
-            <div class="col-sm-12"><h2><?php echo "Information générales du: ".$idEtudiant?></h2><hr>
-                <ul class="list-group">
-                    <li class="list-group-item text-muted">Coordonnées<i class="fa fa-dashboard fa-1x"></i></li>
-                    <li class="list-group-item text-right"><span class="pull-left"><strong>Email</strong></span>
-                        <?php
-                            $editable=$paramAction=="editer1";
-                            buildInput("", $editable, 'EtudiantMail', $infos['EtudiantMail'], 5,5,"class='form-control'")
-                        ?></li>
-                    <li class="list-group-item text-right"><span class="pull-left"><strong>Telephone</strong></span>
-                        <?php
-                            $editable=$paramAction=="editer1";
-                            buildInput("", $editable, 'EtudiantTel', $infos['EtudiantTel'], 5,5,"class='form-control'")
-                        ?>
-                    </li>
-                    <li class="list-group-item text-right"><span class="pull-left"><strong>adresse</strong></span>
-                        <?php
-                            $editable=$paramAction=="editer1";
-                            buildInput("", $editable, 'EtudiantAdresse', $infos['EtudiantAdresse'], 5,5,"class='form-control'")
-                        ?>
-                    </li>
-                    <li class="list-group-item text-right"><span class="pull-left"><strong>Code Postal</strong></span>
-                        <?php
-                            $editable=$paramAction=="editer1";
-                            buildInput("", $editable, 'EtudiantCP', $infos['EtudiantCP'], 5,5,"class='form-control'")
-                        ?>
-                    </li>
-
-                    <li class="list-group-item text-right">
-                        <div class="col-sm-12">
-                            <?php
-                                if (!$editable)
-                                    echo "<input type='button'  onclick='editer(1)' value='Edit' class='btn btn-info pull-left'/>";
-                                else {
-                                    echo " <input type='button'   onclick='valider1()' value='Valider' class='btn btn-primary'/>";
-                                    echo " <input type='button'   onclick='annuler()' value='Annuler' class='btn btn-danger'/>";
-                                    }
-                            ?>
-                        </div>
-                    </li>
-                </ul>
+            <div class="col-sm-12">
                 <br>
                 <div class="tab-content">
                     <div class="tab-pane active" id="home">
                         <div class="col-md-12">
                             <div class="card mb-12">
                                 <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-sm-3">
-                                            <h5 class="mb-0">Civilité</h5>
-                                        </div>
-                                        <div class="col-sm-3 text-secondary">
-                                            <?php
-                                            $editable=$paramAction=="editer1";
-                                            buildInput("", $editable, 'EtudiantCivil', $infos['EtudiantCivil'], 5,5,"class='form-control'")
-                                            ?>
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <h5 class="mb-0">Numéro etudiant</h5>
-                                        </div>
-                                        <div class="col-sm-3 text-secondary">
-                                            <?php echo $idEtudiant;?>
-                                        </div>
+                                    <div class="row center">
+                                        <h4 class="mb-0">
+                                            <i class="fa fa-dashboard fa-1x"></i>
+                                            <?php echo "Information générales du: ".$idEtudiant?>
+                                        </h4>
                                     </div>
                                     <hr>
-
                                     <div class="row">
-                                        <div class="col-sm-3">
-                                            <h5 class="mb-0">Nom</h5>
-                                        </div>
-                                        <div class="col-sm-3 text-secondary">
-                                            <?php
-                                            $editable=$paramAction=="editer1";
-                                            buildInput("", $editable, 'EtudiantNom', $infos['EtudiantNom'], 5,5,"class='form-control'")
-                                            ?>
-                                        </div>
                                         <div class="col-sm-3">
                                             <h5 class="mb-0">Prenom</h5>
                                         </div>
-                                        <div class="col-sm-3 text-secondary">
+                                        <div class="col-sm-9 text-secondary">
                                             <?php
                                             $editable=$paramAction=="editer1";
                                             buildInput("", $editable, 'EtudiantPrenom', $infos['EtudiantPrenom'], 5,5,"class='form-control'")
@@ -318,7 +262,75 @@
                                         </div>
                                     </div>
                                     <hr>
-
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <h5 class="mb-0">Nom</h5>
+                                        </div>
+                                        <div class="col-sm-4 text-secondary">
+                                            <?php
+                                            $editable=$paramAction=="editer1";
+                                            buildInput("", $editable, 'EtudiantNom', $infos['EtudiantNom'], 5,5,"class='form-control'")
+                                            ?>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <h5 class="mb-0">Numéro etudiant</h5>
+                                        </div>
+                                        <div class="col-sm-2 text-secondary">
+                                            <?php echo $idEtudiant;?>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">                                        
+                                        <div class="col-sm-3">
+                                            <h5 class="mb-0">Email</h5>
+                                        </div>
+                                        <div class="col-sm-4 text-secondary">
+                                            <?php
+                                            $editable=$paramAction=="editer1";
+                                            buildInput("", $editable, 'EtudiantMail', $infos['EtudiantMail'], 5,5,"class='form-control'")
+                                            ?>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">                                        
+                                        <div class="col-sm-3">
+                                            <h5 class="mb-0">Telephone</h5>
+                                        </div>
+                                        <div class="col-sm-4 text-secondary">
+                                            <?php
+                                            $editable=$paramAction=="editer1";
+                                            buildInput("", $editable, 'EtudiantTel', $infos['EtudiantTel'], 5,5,"class='form-control'")
+                                            ?>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">                                        
+                                        <div class="col-sm-3">
+                                            <h5 class="mb-0">Adresse</h5>
+                                        </div>
+                                        <div class="col-sm-4 text-secondary">
+                                            <?php
+                                             $editable=$paramAction=="editer1";
+                                             buildInput("", $editable, 'EtudiantAdresse', $infos['EtudiantAdresse'], 5,5,"class='form-control'")
+                                            ?>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">                                        
+                                        <div class="col-sm-3">
+                                            <h5 class="mb-0">Code Postal</h5>
+                                        </div>
+                                        <div class="col-sm-4 text-secondary">
+                                            <?php
+                                           $editable=$paramAction=="editer1";
+                                           buildInput("", $editable, 'EtudiantCP', $infos['EtudiantCP'], 5,5,"class='form-control'")
+                                            ?>
+                                        </div>
+                                    </div>
+                                    <hr>
                                     <div class="row">
                                         <div class="col-sm-3">
                                             <h5 class="mb-0">Date de naissance</h5>
@@ -329,8 +341,11 @@
                                             buildInput("", $editable, 'EtudiantDateNais', $infos['EtudiantDateNais'], 5,5,"class='form-control'")
                                             ?>
                                         </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
                                         <div class="col-sm-3">
-                                            <h5 class="mb-0">Ville de naissance</h5>
+                                            <h5 class="mb-0">Lieu de naissance</h5>
                                         </div>
                                         <div class="col-sm-3 text-secondary">
                                             <?php
@@ -341,26 +356,15 @@
                                     </div>
                                     <hr>
                                     <div class="row">
-                                        <div class="col-sm-3">
-                                            <h5 class="mb-0">Ville de naissance</h5>
-                                        </div>
-                                        <div class="col-sm-9 text-secondary">
-                                            <?php
-                                            $editable=$paramAction=="editer1";
-                                            buildInput("", $editable, 'EtudiantVilleNais', $infos['EtudiantVilleNais'], 5,5,"class='form-control'")
-                                            ?>
-                                        </div>
-                                    </div>
-                                    <hr>
-                                    <div class="row">
-                                        <div class="col-sm-3">
-                                            <h5 class="mb-0">Nationnalité</h5>
-                                        </div>
-                                        <div class="col-sm-9 text-secondary">
-                                            <?php
-                                            $editable=$paramAction=="editer1";
-                                            buildInput("", $editable, 'EtudiantNation', $infos['EtudiantNation'], 5,5,"class='form-control'")
-                                            ?>
+                                     <div class="col-sm-12">
+                                     <?php
+                                        if (!$editable)
+                                            echo "<input type='button'  onclick='editer(1)' value='Edit' class='btn btn-info pull-left'/>";
+                                        else {
+                                            echo " <input type='button'   onclick='valider1()' value='Valider' class='btn btn-primary'/>";
+                                            echo " <input type='button'   onclick='annuler()' value='Annuler' class='btn btn-danger'/>";
+                                            }
+                                    ?>
                                         </div>
                                     </div>
                                 </div>

@@ -18,7 +18,7 @@ if($con === false){
 }
  
 // Attempt create table query execution
-$sql = "CREATE TABLE students (
+$sql = "CREATE TABLE IF NOT EXISTS students  (
     id  INT(6) PRIMARY KEY AUTO_INCREMENT,
     nom VARCHAR(30) NOT NULL,
   prenom VARCHAR(30) NOT NULL,

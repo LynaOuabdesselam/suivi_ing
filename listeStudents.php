@@ -72,10 +72,10 @@
             <tr> 
       <?php 
             echo '
-              <td> <a href= "index.php?page=studentDetail&idEtudiant='.$result['idEtudiant'].'">'.$result['id'].'</td>
-              <td> <a href= "index.php?page=studentDetail&idEtudiant='.$result['idEtudiant'].'">'.ucwords($result['nom']).'</td>
-              <td> <a href= "index.php?page=studentDetail&idEtudiant='.$result['idEtudiant'].'">'.ucwords($result['prenom']).'</td>
-              <td><a href= "index.php?page=studentDetails&idEtudiant='.$result['idEtudiant'].'">'.$result['idEtudiant'].'</td>
+              <td> <a href= "index.php?page=studentDetails&idEtudiant='.$result['idEtudiant'].'">'.$result['id'].'</td>
+              <td> <a href= "index.php?page=studentDetails&idEtudiant='.$result['idEtudiant'].'">'.ucwords($result['nom']).'</td>
+              <td> <a href= "index.php?page=studentDetails&idEtudiant='.$result['idEtudiant'].'">'.ucwords($result['prenom']).'</td>
+              <td> <a href= "index.php?page=studentDetails&idEtudiant='.$result['idEtudiant'].'">'.$result['idEtudiant'].'</td>
               <td>
 
               &nbsp; <a class="btn btn-xs btn-danger" onclick="javascript:confirmationDelete($(this));return false;" href="index.php?page=delete&EtudiantNumero='.base64_encode($result['EtudiantNumero']).'">
