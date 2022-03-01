@@ -30,7 +30,7 @@ if(isset($_POST['signup'])){
             $subject = "Email Verification Code";
             $message = "Your verification code is $code";
             $sender = "From: shahiprem7890@gmail.com";
-            if(mail($email, $subject, $message, $sender)){
+            if(!mail($email, $subject, $message, $sender)){
                 $info = "We've sent a verification code to your email - $email";
                 $_SESSION['info'] = $info;
                 $_SESSION['email'] = $email;
@@ -52,7 +52,7 @@ if(isset($_POST['signup'])){
         $otp_code = mysqli_real_escape_string($con, $_POST['otp']);
         $check_code = "SELECT * FROM user WHERE code = $otp_code";
         $code_res = mysqli_query($con, $check_code);
-        if(!mysqli_num_rows($code_res) > 0){
+        if(mysqli_num_rows($code_res) > 0){
             $fetch_data = mysqli_fetch_assoc($code_res);
             $fetch_code = $fetch_data['code'];
             $email = $fetch_data['email'];
