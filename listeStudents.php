@@ -1,64 +1,17 @@
  <?php require_once "controllerUserData.php";
-       //require_once "createTableStudent.php";
-       //require_once "readCSV.php"
  ?>
 
     <ol class="breadcrumb">
       <li class="breadcrumb-item" aria-current="page"><a href="index.php?page=home">Dashboard </a></li>
-      <li class="breadcrumb-item active" aria-current="page"> Telecommunication 3rd year </li>
+      <li class="breadcrumb-item active" aria-current="page"> Telecommunication 2nd year </li>
     </ol>
 
-    <!--
-      <?php 
-          if(isset($_GET['delete']) || isset($_GET['edit'])) {
-        ?>
-            <div role="alert" aria-live="assertive" aria-atomic="true" class="toast fade"
-                            data-autohide="true" data-animation="true" data-delay="2000">
-              <div class="toast-header">
-                <strong class="mr-auto">Student Insert Alert</strong>
-                <small><?php echo date('d-M-Y'); ?></small>
-                <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-
-              <div class="toast-body">
-                <?php 
-                  if (isset($_GET['delete'])) {
-                    if ($_GET['delete']=='success') {
-                      echo "<p style='color: green; font-weight: bold;'>Student Deleted Successfully!</p>";
-                    }  
-                  }
-                  if (isset($_GET['delete'])) {
-                    if ($_GET['delete']=='error') {
-                      echo "<p style='color: red'; font-weight: bold;>Student Not Deleted!</p>";
-                    }  
-                  }
-                  if (isset($_GET['edit'])) {
-                    if ($_GET['edit']=='success') {
-                      echo "<p style='color: green; font-weight: bold; '>Student Edited Successfully!</p>";
-                    }  
-                  }
-                  if (isset($_GET['edit'])) {
-                    if ($_GET['edit']=='error') {
-                      echo "<p style='color: red; font-weight: bold;'>Student Not Edited!</p>";
-                    }  
-                  }
-                ?>
-              </div>
-            </div>
-          <?php 
-        } 
-      ?>
-    -->
-    
   <table class="table  table-striped table-hover table-bordered" id="data" style="width:100%;">
     <thead class="thead-dark">
       <tr>
-          <th scope="col">N°</th>
-          <th scope="col">Name</th>
-          <th scope="col">Surname</th>
-          <th scope="col">Student_Number</th>
+          <th scope="col">N° Étudiant</th>
+          <th scope="col">Nom</th>
+          <th scope="col">Prenom</th>
           <th scope="col">Action</th>
 
       </tr>
@@ -68,17 +21,15 @@
         $query=mysqli_query($con,'SELECT * FROM `students` ORDER BY `students`.`nom`;');
         while ($result = mysqli_fetch_array($query)) 
           {
+            
       ?>
             <tr> 
       <?php 
             echo '
-              <td> <a href= "index.php?page=studentDetails&idEtudiant='.$result['idEtudiant'].'">'.$result['id'].'</td>
+            <td> <a href= "index.php?page=studentDetails&idEtudiant='.$result['idEtudiant'].'">'.$result['idEtudiant'].'</td>
               <td> <a href= "index.php?page=studentDetails&idEtudiant='.$result['idEtudiant'].'">'.ucwords($result['nom']).'</td>
               <td> <a href= "index.php?page=studentDetails&idEtudiant='.$result['idEtudiant'].'">'.ucwords($result['prenom']).'</td>
-              <td> <a href= "index.php?page=studentDetails&idEtudiant='.$result['idEtudiant'].'">'.$result['idEtudiant'].'</td>
-              <td>
-
-              &nbsp; <a class="btn btn-xs btn-danger" onclick="javascript:confirmationDelete($(this));return false;" href="index.php?page=delete&EtudiantNumero='.base64_encode($result['EtudiantNumero']).'">
+              <td>&nbsp; <a class="btn btn-xs btn-danger" onclick="javascript:confirmationDelete($(this));return false;" href="index.php?page=delete&idEtudiant='.$result['idEtudiant'].'">
               <i class="fas fa-trash-alt"></i></a></td>';
         ?>
             </tr>  
@@ -94,7 +45,7 @@
       <form action="readCSV.php" method="post"
         name="frmExcelImport" id="frmExcelImport" enctype="multipart/form-data">
         <div>
-          <label>Choose ExcelFile</label> 
+          <label>Importer un fichier ExcelFile</label> 
           <input type="file" name="file" id="file" accept=".csv, .xls,.xlsx">
           <button type="submit" id="submit" name="import" class="btn-submit">Import</button> 
         </div>

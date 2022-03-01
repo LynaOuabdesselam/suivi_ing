@@ -1,16 +1,5 @@
 <?php 
-//   $con = mysqli_connect('localhost', 'root', '', 'pvT2');
-//   if(mysqli_connect_error())
-//       echo "Connection Error.";
-//   else
-//       echo "Database Connection Successfully."  
-      
-
-
-      
-/* Attempt MySQL server connection. Assuming you are running MySQL
-server with default setting (user 'root' with no password) */
-$con = mysqli_connect("localhost", "root", "", "applietudiant2");
+$con = mysqli_connect("localhost", "root", "", "applietudiant");
  
 // Check connection
 if($con === false){
@@ -19,11 +8,9 @@ if($con === false){
  
 // Attempt create table query execution
 $sql = "CREATE TABLE IF NOT EXISTS students  (
-    id  INT(6) PRIMARY KEY AUTO_INCREMENT,
+    idEtudiant  INT(8) PRIMARY KEY,
     nom VARCHAR(30) NOT NULL,
-  prenom VARCHAR(30) NOT NULL,
-  idEtudiant INT(8) NOT NULL
- 
+    prenom VARCHAR(30) NOT NULL
 )";
 if(mysqli_query($con, $sql)){
     echo "Table created successfully.";

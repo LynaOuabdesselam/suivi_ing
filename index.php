@@ -76,7 +76,7 @@
                   </ul>
                 </li>
                 <li class="active"><a href="index.php?page=user-profile"> <i class="fa fa-user"></i> Profil </a></li>
-                <li><a href="index.php?page=formEtudiant"> <i class="fa fa-plus"></i> Plus </a></li>
+                <li><a href="index.php?page=formNewStudent"> <i class="fa fa-plus"></i> Plus </a></li>
                 <li><a href="index.php?page=all-users"> <i class="fa fa-users"></i> Stages </a></li>
                 <li><a href="logout-user.php"> <i class="fa fa-power-off"></i> Logout </a></li>
               </ul>

@@ -12,7 +12,7 @@
     }
     function connectToBD(){ 
 
-        $objetPdo = new PDO('mysql:host=localhost;dbname=applietudiant2', 'root', '');
+        $objetPdo = new PDO('mysql:host=localhost;dbname=applietudiant', 'root', '');
         if (!$objetPdo) echo "Echec de connexion à la base de données";
         $objetPdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         return $objetPdo;

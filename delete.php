@@ -1,13 +1,17 @@
-<?php 
-session_start();
-if (isset($_SESSION['user_login'])) {
-	$EtudiantNumero = base64_decode($_GET['EtudiantNumero']);
-	if(mysqli_query($con,"DELETE FROM `etudiant` WHERE `EtudiantNumero` = '$EtudiantNumero'")){
+ <?php
+   try {
 
-		header('Location: index.php?page=listeStudents&delete=success');
-	}else{
-		header('Location: index.php?page=all-listeStudents&delete=error');
-	}
-}else{
-	header('Location: login-user.php');
- }
+        $maBase = new PDO("mysql:host=localhost;dbname=applietudiant","root", "");
+
+    }catch (Exception $e){
+        die('Impossible de se connecter à la base ' . $e->getMessage());
+
+    }
+
+    $req = $maBase->prepare('DELETE FROM students WHERE idEtudiant=:num');
+    $req->bindValue(':num', $_GET['idEtudiant'], PDO::PARAM_INT);
+    $req->execute();
+  
+    header('Location:index.php?page=listeStudents');
+?>
+

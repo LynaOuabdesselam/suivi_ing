@@ -1,3 +1,4 @@
 <?php 
-$con = mysqli_connect('localhost', 'root', '', 'applietudiant2');
+$con = mysqli_connect('localhost', 'root', '', 'applietudiant');
+
 ?>

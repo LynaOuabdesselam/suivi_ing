@@ -6,7 +6,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 <script type="text/javascript" src="Etudiant.js"></script>
 
-    <form id="msform" method="post" action="ajoutEtudiant.php">
+    <form id="msform" method="post" action="addIntern.php">
 	 
 
     <fieldset>

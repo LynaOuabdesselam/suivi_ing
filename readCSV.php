@@ -1,4 +1,5 @@
 <?php
+    require_once "createTableStudent.php";
     $csv = array();
     $i = 0;
     if(($handle = fopen("juryT2_ubuntu.csv", "r")) !== FALSE)
@@ -26,8 +27,8 @@
             $i++;
         }
         $lineData = $csv[$i];
-        $insert_data = "INSERT INTO students (nom , prenom, idEtudiant) 
-        VALUES ( '$lineData[0]', ' $lineData[1]', ' $lineData[2]')";
+        $insert_data = "INSERT INTO students (idEtudiant, nom , prenom) 
+        VALUES ( '$lineData[2]', ' $lineData[0]', ' $lineData[1]')";
 
         $data_check = mysqli_query($con, $insert_data); 
         
