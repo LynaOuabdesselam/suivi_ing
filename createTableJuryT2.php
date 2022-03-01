@@ -6,7 +6,7 @@
       echo "Database Connection Successfully.";
 
   // sql to create table
-  $paash="DROP TABLE juryT2";
+  $paash="DROP TABLE IF EXISTS juryT2";
   $sql = "CREATE TABLE IF NOT EXISTS juryT2 (
   idEtudiant INT(8) NOT NULL PRIMARY KEY,
   nom VARCHAR(30) NOT NULL,

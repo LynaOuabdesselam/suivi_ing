@@ -97,12 +97,4 @@
         '$lineData[136]', ' $lineData[137]', ' $lineData[138]','$lineData[148]',
         '$lineData[149]')";
 ?>
-    <br>
-<?php
-        var_dump($lineData);
-        $data_check = mysqli_query($con, $insert_data); 
-        
-        //die();
-    }
-
-?>
+   
