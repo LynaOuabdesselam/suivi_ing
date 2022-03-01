@@ -32,9 +32,7 @@ echo '<pre>';
         theorieInofrmation,tOptP, tOptTP, tOptCoef, tOpt,ueTelecom2, ueTelecom2Resultats,
         tnsP , tnsTP, tnsCoef, tns, tsaP, tsaTP ,tsaCoef, tsa,ueTraitementSignal2 , 
         ueTraitementSignal2Resultats,anglaisP , anglaisCC, anglaisCoef, anglais, ueLanguesVivante1,
-        ueLanguesVivante1Resultat
-        
-        , introAnalyseDonneesTP ,introAnalyseDonneesCoef, 
+        ueLanguesVivante1Resultat, introAnalyseDonneesTP ,introAnalyseDonneesCoef, 
         introAnalyseDonnees, ethiqueP,ethiqueCoef, ethique,introSociologieP , 
         introSociologieCoef, introSociologie,ueCultureEntreprise, ueCultureEntrepriseResultat,
         s3Moyenne ,s3Resultat, javaProjet, javaTP, javaCoef, java,web2TP, web2Coef, 

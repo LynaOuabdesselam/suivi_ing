@@ -6,11 +6,10 @@
       echo "Database Connection Successfully.";
 
   // sql to create table
-  $sql = "CREATE TABLE juryT2
-  id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  $sql = "CREATE TABLE juryT2 (
+  idEtudiant INT(8) NOT NULL PRIMARY KEY,
   nom VARCHAR(30) NOT NULL,
   prenom VARCHAR(30) NOT NULL,
-  idEtudiant INT(8) NOT NULL,
   dettes VARCHAR(3),
   credits INT(2),
   redoublants VARCHAR(3),
