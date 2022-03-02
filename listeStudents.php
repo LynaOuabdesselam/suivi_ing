@@ -1,12 +1,21 @@
  <?php require_once "controllerUserData.php";
         //require_once "readCSV.php";
  ?>
-
     <ol class="breadcrumb">
       <li class="breadcrumb-item" aria-current="page"><a href="index.php?page=home">Dashboard </a></li>
       <li class="breadcrumb-item active" aria-current="page"> Telecommunication 2nd year </li>
     </ol>
-
+    </br>
+    <!-- <div class="outer-container"> -->
+      <form action="readCSV.php" method="post">
+        <div>
+          <input  type="file" name="file" id="file" accept=".csv, .xls,.xlsx">
+          <button name="import" class="btn"><i class="fas fa-download"></i></button> 
+        </div>
+      </form>
+    <!-- </div> -->
+    <div id="response" class="<?php if(!empty($type)) { echo $type . " display-block"; } ?>"><?php if(!empty($message)) { echo $message; } ?></div>
+    </br>
   <table class="table  table-striped table-hover table-bordered" id="data" style="width:100%;">
     <thead class="thead-dark">
       <tr>
@@ -41,19 +50,7 @@
   </table>
 
     <!-- ************************ -->    
-    </br>
-    <div class="outer-container">
-      <form action="readCSV.php" method="post"
-        name="frmExcelImport" id="frmExcelImport" enctype="multipart/form-data">
-        <div>
-          <label>Importer un fichier ExcelFile</label> 
-          <input type="file" name="file" id="file" accept=".csv, .xls,.xlsx">
-          <button type="submit" id="submit" name="import" class="btn-submit">Import</button> 
-        </div>
-      </form>
-    </div>
-    <div id="response" class="<?php if(!empty($type)) { echo $type . " display-block"; } ?>"><?php if(!empty($message)) { echo $message; } ?></div>
-    </br>
+ 
     <!-- ************************ -->  
 <script type="text/javascript">
   function confirmationDelete(anchor)
@@ -63,4 +60,5 @@
       window.location=anchor.attr("href");
   }
 </script>
+
        

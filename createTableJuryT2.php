@@ -1,9 +1,9 @@
 <?php 
   $con = mysqli_connect('localhost', 'root', '', 'applietudiant');
-  if(mysqli_connect_error())
-      echo "Connection Error.";
-  else
-      echo "Database Connection Successfully.";
+  // if(mysqli_connect_error())
+  //     echo "Connection Error.";
+  // else
+  //     echo "Database Connection Successfully.";
 
   // sql to create table
   $paash="DROP TABLE IF EXISTS juryT2";
@@ -139,8 +139,8 @@
   qseP FLOAT(4,2) CHECK (qseP <= 20),
   qseCoef VARCHAR(10),
   qse FLOAT(4,2) CHECK (qse <= 20), 
-  santeSecuriteTravailP FLOAT(4,2) CHECK (santeSecuriteTravailP <= 20),
   santeSecuriteTravailCoef VARCHAR(10), 
+  santeSecuriteTravailP FLOAT(4,2) CHECK (santeSecuriteTravailP <= 20),
   santeSecuriteTravail FLOAT(4,2) CHECK (santeSecuriteTravail <= 20),
   ueCultureEntreprise8 VARCHAR(10),
   ueCultureEntreprise8Resultat VARCHAR(5),
@@ -150,16 +150,16 @@
   dettesSpeT2 VARCHAR(30),  
   remarques VARCHAR(30)
   )";
-
-  if ($con->query($paash) === TRUE) {
-    echo "Table juryT2 deleted successfully";
-  } else {
-    echo "Error deleting table: " . $con->error;
-  }
-  
-  if ($con->query($sql) === TRUE) {
-    echo "Table juryT2 created successfully";
-  } else {
-    echo "Error creating table: " . $con->error;
-  }
+  $con->query($paash);
+  // if ( $con->query($paash) === TRUE) {
+  //   echo "Table juryT2 deleted successfully";
+  // } else {
+  //   echo "Error deleting table: " . $con->error;
+  // }
+  $con->query($sql);
+  // if ($con->query($sql) === TRUE) {
+  //   echo "Table juryT2 created successfully";
+  // } else {
+  //   echo "Error creating table: " . $con->error;
+  // }
 ?>

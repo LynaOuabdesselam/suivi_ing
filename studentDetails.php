@@ -156,30 +156,28 @@
 
     
     <title><?php echo $fetch_info['name'] ?> |Cordonnées</title>
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https:///maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link href="styleCal.css" rel="stylesheet" type="text/css">
     <link href="calendar.css" rel="stylesheet" type="text/css">  
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/dataTables.bootstrap4.min.css">
+    <!-- <link rel="stylesheet" href="css/dataTables.bootstrap4.min.css"> -->
     <link rel="stylesheet" href="css/fontawesome.min.css">
     <link rel="stylesheet" href="css/solid.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <script src="js/jquery.min.js" type="text/javascript"></script>
-    <script src="js/jquery.dataTables.min.js" type="text/javascript"></script>
+    <!-- <script src="js/jquery.dataTables.min.js" type="text/javascript"></script> -->
     <script src="js/jquery-3.5.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet"  type='text/css'>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="js/jquery.dataTables.min.js"></script>
-    <script src="js/dataTables.bootstrap4.min.js"></script>
+    <!-- <script src="js/jquery.dataTables.min.js"></script> -->
+    <!-- <script src="js/dataTables.bootstrap4.min.js"></script> -->
     <script src="js/fontawesome.min.js"></script>
     <script src="js/script.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
     
     <style>
         h4 {
@@ -263,7 +261,7 @@
   </ul>
 
   <div class="tab-content">
-    <div id="Informationsgénérales" class="tab-pane fade in active">
+    <div id="Informationsgénérales" class="tab-pane in active">
 <!-- *********************************************************************************** -->
     <div class="container bootstrap snippet">
         <div class="row">
@@ -419,6 +417,7 @@
     </div>
   </div>
 </div>
+
 </body>
 
 

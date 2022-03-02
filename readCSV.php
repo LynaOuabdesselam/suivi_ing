@@ -2,7 +2,7 @@
 
     $csv = array();
     $i = 0;
-    if(($handle = fopen("juryT2_ubuntu.csv", "r")) !== FALSE)
+    if(($handle = fopen($_POST['file'], "r")) !== FALSE)
     //if(($handle = fopen("juryT2.csv", "r")) !== FALSE)
     {
         while(($data = fgetcsv($handle, 1000, "\t")) !== FALSE)
@@ -67,7 +67,7 @@
         anglaisRenforce,ouvertureLinguistiqueCC, ouvertureLinguistiqueCoef, 
         ouvertureLinguistique, anglais2, optionAnglais, ueLanguesVivante8, ueLanguesVivante8Resultat,
         projetCreationEntrepriseCoef , projetCreationEntrepriseCC, projetCreationEntreprise, 
-        qseCoef, qseP, qse, santeSecuriteTravailP , santeSecuriteTravailCoef, 
+        qseCoef, qseP, qse, santeSecuriteTravailCoef,santeSecuriteTravailP , 
         santeSecuriteTravail, ueCultureEntreprise8, ueCultureEntreprise8Resultat,
         s4Moyenne ,s4Resultat, commentaires, dettesSpeT2, remarques)
         VALUES ( '$lineData[2]', ' $lineData[0]', ' $lineData[1]','$lineData[3]', ' $lineData[4]', ' $lineData[5]',
@@ -98,10 +98,12 @@
 ?>
     <br>
 <?php
-        var_dump($lineData);
+        //var_dump($lineData);
         $data_check = mysqli_query($con, $insert_data); 
-        
-        //die();
+        // header('location: index.php?page=listeStudents');
+        //die('ici');
+
+        header('location: http://localhost/suivi_ing/index.php?page=listeStudents');
     }
 
 ?>

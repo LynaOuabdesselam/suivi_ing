@@ -8,14 +8,12 @@
     <link href="styleCal.css" rel="stylesheet" type="text/css">
     <link href="calendar.css" rel="stylesheet" type="text/css">  
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <!-- <link rel="stylesheet" href="css/dataTables.bootstrap4.min.css"> -->
+    <link rel="stylesheet" href="css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="css/fontawesome.min.css">
     <link rel="stylesheet" href="css/solid.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-        <!-- <script src="js/jquery.min.js" type="text/javascript"></script>
-<script src="js/jquery.dataTables.min.js" type="text/javascript"></script> -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">   
     <script src="js/jquery-3.5.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.dataTables.min.js"></script>
@@ -78,14 +76,14 @@
               </div>
               <ul class="nav navbar-inverse">
                 <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" 
-                      href="#"> <i class="fa fa-users"></i> Étudiants <span class="caret"> </span></a>
+                      href="#"> <i class="fa fa-users"></i> Étudiants </a>
                   <ul class="dropdown-menu">
                     <li><a href="index.php?page=listeStudents"> Telecom 1</a></li>
                     <li><a href="index.php?page=listeStudents"> Telecom 2</a></li>
                     <li><a href="index.php?page=listeStudents"> Telecom 3</a></li>
                   </ul>
                 </li>
-                <li class="active"><a href="index.php?page=user-profile"> <i class="fa fa-user"></i> Profil </a></li>
+                <li><a href="index.php?page=user-profile"> <i class="fa fa-user"></i> Profil </a></li>
                 <li><a href="index.php?page=formNewStudent"> <i class="fa fa-plus"></i> Plus </a></li>
                 <li><a href="index.php?page=all-users"> <i class="fa fa-users"></i> Stages </a></li>
                 <li><a href="logout-user.php"> <i class="fa fa-power-off"></i> Logout </a></li>
