@@ -7,7 +7,7 @@ if($con === false){
 }
  
 // Attempt create table query execution
-$sql = "CREATE TABLE IF NOT EXISTS students  (
+$sql = "CREATE TABLE IF NOT EXISTS juryT2  (
     idEtudiant  INT(8) PRIMARY KEY,
     nom VARCHAR(30) NOT NULL,
     prenom VARCHAR(30) NOT NULL

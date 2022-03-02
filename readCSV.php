@@ -18,7 +18,7 @@
                 
         }
     }
-    //fclose($handle);
+    fclose($handle);
 
     
     require_once "createTableJuryT2.php";
@@ -40,7 +40,6 @@
             $lineData[$j] = str_replace(' ', '', $lineData[$j]);
             $lineData[$j] = str_replace('\r', '', $lineData[$j]);
             $lineData[$j] = str_replace('\n', '', $lineData[$j]);
-            echo "*************************************";
         }
         /*echo '<pre>';
         print_r($lineData);
@@ -99,7 +98,7 @@
 ?>
     <br>
 <?php
-        //var_dump($lineData);
+        var_dump($lineData);
         $data_check = mysqli_query($con, $insert_data); 
         
         //die();

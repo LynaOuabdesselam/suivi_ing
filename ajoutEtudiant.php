@@ -6,7 +6,7 @@
     $idEtudiant=isset($_POST['idEtudiant'])?$_POST['idEtudiant']:"";
 
     
-    $query="INSERT INTO `students`(`idEtudiant`, `nom`, `prenom`)
+    $query="INSERT INTO `juryT2`(`idEtudiant`, `nom`, `prenom`)
      values ('$idEtudiant','$nom','$prenom');";
 
 

@@ -8,7 +8,7 @@
 
     }
 
-    $req = $maBase->prepare('DELETE FROM students WHERE idEtudiant=:num');
+    $req = $maBase->prepare('DELETE FROM juryT2 WHERE idEtudiant=:num');
     $req->bindValue(':num', $_GET['idEtudiant'], PDO::PARAM_INT);
     $req->execute();
   

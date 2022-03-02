@@ -1,5 +1,5 @@
  <?php require_once "controllerUserData.php";
-       //require_once "readCSV.php";
+        //require_once "readCSV.php";
  ?>
 
     <ol class="breadcrumb">
@@ -19,7 +19,7 @@
     </thead>
     <tbody>
       <?php 
-        $query=mysqli_query($con,'SELECT * FROM `students` ORDER BY `students`.`nom`;');
+        $query=mysqli_query($con,'SELECT * FROM `juryT2` ORDER BY `juryT2`.`nom`;');
         while ($result = mysqli_fetch_array($query)) 
           {
             

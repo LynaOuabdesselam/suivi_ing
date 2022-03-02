@@ -142,7 +142,7 @@
   santeSecuriteTravailP FLOAT(4,2) CHECK (santeSecuriteTravailP <= 20),
   santeSecuriteTravailCoef VARCHAR(10), 
   santeSecuriteTravail FLOAT(4,2) CHECK (santeSecuriteTravail <= 20),
-  ueCultureEntreprise8 FLOAT(4,2) CHECK (ueCultureEntreprise8 <= 20),
+  ueCultureEntreprise8 VARCHAR(10),
   ueCultureEntreprise8Resultat VARCHAR(5),
   s4Moyenne FLOAT(4,2) CHECK (s4Moyenne <= 20),
   s4Resultat VARCHAR(5), 
@@ -162,7 +162,4 @@
   } else {
     echo "Error creating table: " . $con->error;
   }
-
-
-
 ?>
