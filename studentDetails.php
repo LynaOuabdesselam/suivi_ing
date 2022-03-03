@@ -410,7 +410,99 @@
       <h3>Menu 1</h3>
     </div>
     <div id="TOEIC" class="tab-pane fade">
-      <h3>Menu 2</h3>
+<!-- ******************************************************************************************** -->
+<div class="container bootstrap snippet">
+        <div class="row">
+            <div class="col-sm-12">
+                <br>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="home">
+                        <div class="col-md-12">
+                            <div class="card mb-12">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-sm-12 text-secondary">
+                                            <?php
+                                            $editable=$paramAction=="editer1";
+                                            buildInput("", $editable, 'prenom', $infos['prenom'], 5,5,"class='form-control'")
+                                            ?>
+                                             <?php
+                                            $editable=$paramAction=="editer1";
+                                            buildInput("", $editable, 'nom', $infos['nom'], 5,5,"class='form-control'")
+                                            ?>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <h5 class="mb-0">Test TOEIC :</h5>
+                                        </div>
+                                        <div class="col-sm-3 text-secondary">
+                                            <?php
+                                                $editable=$paramAction=="editer1";
+                                                buildInput("", $editable, 'anneeTOEIC', $infos['anneeTOEIC'], 5,5,"class='form-control'")
+                                            ?>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <h5 class="mb-0">TOEIC Blanc 1 :</h5>
+                                        </div>
+                                        <div class="col-sm-4 text-secondary">
+                                            <?php
+                                            $editable=$paramAction=="editer1";
+                                            buildInput("", $editable, 'TOEICblanc1', $infos['TOEICblanc1'], 5,5,"class='form-control'")
+                                            ?>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <h5 class="mb-0">TOEIC Blanc 2 :</h5>
+                                        </div>
+                                        <div class="col-sm-4 text-secondary">
+                                            <?php
+                                            $editable=$paramAction=="editer1";
+                                            buildInput("", $editable, 'TOEICblanc2', $infos['TOEICblanc2'], 5,5,"class='form-control'")
+                                            ?>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <h5 class="mb-0">TOEIC Officiel</h5>
+                                        </div>
+                                        <div class="col-sm-4 text-secondary">
+                                            <?php
+                                             $editable=$paramAction=="editer1";
+                                             buildInput("", $editable, 'TOEICofficiel', $infos['TOEICofficiel'], 5,5,"class='form-control'")
+                                            ?>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <h5 class="mb-0">Niveaux d'anglais :</h5>
+                                        </div>
+                                        <div class="col-sm-4 text-secondary">
+                                            <?php
+                                           $editable=$paramAction=="editer1";
+                                           buildInput("", $editable, 'anglaisResultats', $infos['anglaisResultats'], 5,5,"class='form-control'")
+                                            ?>
+                                        </div>
+                                    </div>
+                                    <hr>                                  
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+         </div><!--/row-->
+    </div>
+
+<!-- ******************************************************************************************** -->
     </div>
     <div id="SEMI" class="tab-pane fade">
       <h3>Menu 3</h3>

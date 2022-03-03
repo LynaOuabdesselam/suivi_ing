@@ -33,7 +33,7 @@ if($email != false && $password != false){
      }
     }
 ?>
-  <div class="col-sm-12">
+  <div class="col-sm-4">
     <!-- <div class="card text-white bg-primary mb-3"> -->
       <div class="card-header">
         <div class="col-sm-6">

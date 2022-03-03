@@ -480,7 +480,7 @@ div.green {
 
   
   <table class="table">
-    <thead>
+    <thead style="background-color:lightgray;">
   
   
   
@@ -757,7 +757,7 @@ div.green {
 
   
   <table class="table">
-    <thead>
+    <thead style="background-color:lightgray;">
 
 
   <tr>
@@ -815,7 +815,7 @@ div.green {
   </tr>
 
 
-  <tr class="<?php echo $infos['ueReseaux2Resultat'] == 'AJ' ? 'lignecoloree': 'lignenormale';?>">
+  <tr class="<?php echo $infos['ueReseaux2Resultat'] == "AJ" ? 'lignecoloree': 'lignenormale';?>">
     <td><strong>UE Réseaux 2</strong></td>
     <td></td>
     <td></td>
@@ -870,7 +870,7 @@ div.green {
   </tr>
 
    
-  <tr class="<?php echo $infos['ueTelecom3Resultats'] == 'AJ' ? 'lignecoloree':'lignenormale';?>">
+  <tr class="<?php echo $infos['ueTelecom3Resultats'] == "AJ" ? 'lignecoloree':'lignenormale';?>">
     <td><strong>UE Télécommunications 3</strong></td>
     <td></td>
     <td></td>
