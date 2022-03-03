@@ -5,37 +5,21 @@ body{
   background-repeat: no-repeat;
   background-size: cover;
 }
-/* Float four columns side by side */
-.column {
-  float: left;
-  width: 30%;
-  padding: 0 15px;
-  box-sizing: border-box;
-}
 
-/* Responsive columns */
-@media screen and (max-width: 600px) {
-  .column {
-    width: 100%;
-    display: block;
-    margin-bottom: 20px;
-  }
-}
-
-/* Style the counter cards */
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  width : 450px;
   padding: 20px;
+  margin: 20px;
   text-align: center;
   background-color: #343A40;
-  /* opacity : 1; */
+  opacity : 0.8;
 }
-.card h3{
-  color : #fff;
+.card h4{
+  color : OrangeRed;
 }
 </style>
-
-
 
 <?php 
 $email = $_SESSION['email'];
@@ -72,44 +56,36 @@ if($email != false && $password != false){
     }
 ?>
 <br>
-<div class="container">
-  <div class="col-sm-6">
-      <h3>Suivi en ligne d'élèves ingénieur</h3>
-  </div>
-</div>
-<br>
-<br><br>
-<br><br>
-<br><br>
-<br><br>
-<br><br>
-<br><br>
+
+
 <!-- ________________________________________ -->
 
-<div class="row d-flex justify-content-center">
-  <div class="column">
+<div class="row">
+  <!-- <div class="column"> -->
     <a href="index.php?page=listeStudents">
       <div class="card">
-        <h3>Télécommunication 1</h3>
+        <h4>Réseaux et Télécommunication 1ére année</h4>
       </div>
     </a>
-  </div>
-
-  <div class="column">
+  <!-- </div> -->
+</div>
+<div class="row">
+  <!-- <div class="column"> -->
     <a href="index.php?page=listeStudents">
       <div class="card">
-        <h3>Télécommunication 2</h3>
+        <h4>Réseaux et Télécommunication 2éme année</h4>
       </div>
     </a>
-  </div>
-  
-  <div class="column">
+  <!-- </div> -->
+</div>
+<div class="row">
+  <!-- <div class="column"> -->
     <a href="index.php?page=listeStudents">
         <div class="card">
-        <h3>Télécommunication 3</h3>
+        <h4>Réseaux et Télécommunication 3éme année</h4>
       </div>
     </a>
-  </div>
+  <!-- </div> -->
 </div>
 <!-- ________________________________________ -->
   <div class="col-md-9">

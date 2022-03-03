@@ -1,3 +1,4 @@
+<?php require_once "controllerUserData.php"; ?>
 <!doctype html>
 <html lang="en">
   <head>

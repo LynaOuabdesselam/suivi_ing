@@ -85,7 +85,7 @@
 <script type="text/javascript">
   function confirmationDelete(anchor)
   {
-   var conf = confirm('Are you sure want to delete this record?');
+   var conf = confirm('Êtes-vous sûr de vouloir supprimer cet élément ?');
    if(conf)
       window.location=anchor.attr("href");
   }

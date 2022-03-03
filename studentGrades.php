@@ -68,9 +68,10 @@
     {
         if ($objetPdo==null)
             $objetPdo = connectToBD();
-            $i = 0;
         $sql = "insert into  $table (  ";
-        $sqlVal = " values ( ";        
+        $sqlVal = " values ( ";
+        $i = 0;
+
         foreach ($new_info as $key => $val) {
             if ($to_exclude && array_search($key ,$to_exclude)!==false)
                 continue;
@@ -274,7 +275,6 @@
 
             }
 
-
             if( $maxlength!='')
                 echo   " maxlength='$maxlength' ";
 
@@ -369,14 +369,7 @@
 
             }
 
-            function putGreenBackground() {
-                $('td').each(
-                    function(i){
-                        if ($(this).value == "ADM"){
-                            $('tr:eq(' + (i-1) + ')').addClass('rowBeforeControlVariable');
-                        }
-                    });
-            }
+            
     </script>
 </head>
 
@@ -462,7 +455,7 @@ div.green {
    <?php echo " NOM : ".$editable=$paramAction=="editer1";
    buildInput("", $editable, 'nom', $infos['nom'])
    ?>
-
+<br>
 <?php echo " PRENOM : ".$editable=$paramAction=="editer1";
    buildInput("", $editable, 'prenom', $infos['prenom'])
   ?>
@@ -480,7 +473,7 @@ div.green {
 
   
   <table class="table">
-    <thead style="background-color:lightgray;">
+    <thead>
   
   
   
@@ -495,7 +488,10 @@ div.green {
   </tr>
   </thead>
     <tbody>
-    <tr class="<?php echo $infos['ueOutilsInformatiques2Reultats'] == 'ADM' ? 'lignenormale': 'lignecoloree';?>">
+
+  
+        <tr id="<?php echo trim($infos['ueOutilsInformatiques2Reultats'], ' ');?>"> 
+   
     <td><strong>U.E Outils Informatique 2</strong></td>
     <td></td>
     <td></td>
@@ -535,8 +531,8 @@ div.green {
     <td></td>
     
   </tr>
-
-  <tr class="<?php echo $infos['ueTraitementSignal2Resultats'] == 'AJ' ?  'lignecoloree':'lignenormale';?>">
+  
+  <tr id="<?php echo trim($infos['ueTelecom2Resultats'], ' ');?>">
     <td><strong>UE Télécommuncations 2</strong></td>
     <td></td>
     <td></td>
@@ -593,7 +589,7 @@ div.green {
 
 
    
-  <tr class="<?php echo $infos['ueTraitementSignal2Resultats'] == 'AJ' ?  'lignecoloree':'lignenormale';?>">
+  <tr id="<?php echo trim($infos['ueTraitementSignal2Resultats'], ' ');?>">
     <td><strong>UE Traitement du signal 2</strong></td>
     <td></td>
     <td></td>
@@ -632,7 +628,7 @@ div.green {
    buildInput("", $editable, 'tsa', $infos['tsa'])?></td>
     <td></td>
     
-    <tr class="<?php echo $infos['ueLanguesVivante1Resultat'] == 'AJ' ?  'lignecoloree':'lignenormale';?>">
+    <tr id="<?php echo trim($infos['ueLanguesVivante1Resultat'], ' ');?>">
     <td><strong>UE Langues vivantes S1</strong></td>
     <td></td>
     <td></td>
@@ -661,7 +657,7 @@ div.green {
  
 
 
-  <tr class="<?php echo $infos['ueCultureEntrepriseResultat'] == 'AJ' ?  'lignecoloree':'lignenormale';?>">
+  <tr id="<?php echo trim($infos['ueCultureEntrepriseResultat'], ' ');?>">
     <td><strong> UE Culture d'entreprise 1</strong></td>
     <td></td>
     <td></td>
@@ -715,7 +711,7 @@ div.green {
   </tr>
 
 
-  <tr class="<?php echo $infos['s3Resultat'] == 'ADM' ? 'lignenormale': 'lignecoloree';?>">
+  <tr id="<?php echo trim($infos['s3Resultat'], ' ');?>">
     <td><strong>Moyenne semestre S1</strong></td>
     <td></td>
     <td></td>
@@ -757,7 +753,7 @@ div.green {
 
   
   <table class="table">
-    <thead style="background-color:lightgray;">
+    <thead>
 
 
   <tr>
@@ -771,7 +767,12 @@ div.green {
   </tr>
   </thead>
     <tbody>
-<tr  class="<?php echo $infos['ueOutilsInformatiques3Resultats'] == 'AJ' ? 'lignecoloree': 'lignenormale';?>">
+  
+ 
+
+  
+        <tr id="<?php echo trim($infos['ueOutilsInformatiques3Resultats'], ' ');?>"> 
+
     <td><strong>UE Outils informatiques</strong></td>
     <td></td>
     <td></td>
@@ -815,7 +816,7 @@ div.green {
   </tr>
 
 
-  <tr class="<?php echo $infos['ueReseaux2Resultat'] == "AJ" ? 'lignecoloree': 'lignenormale';?>">
+  <tr id="<?php echo trim($infos['ueReseaux2Resultat'], ' ');?>">
     <td><strong>UE Réseaux 2</strong></td>
     <td></td>
     <td></td>
@@ -868,9 +869,12 @@ div.green {
    buildInput("", $editable, 'rtd2', $infos['rtd2'])?></td>
     <td></td>
   </tr>
-
+  
    
-  <tr class="<?php echo $infos['ueTelecom3Resultats'] == "AJ" ? 'lignecoloree':'lignenormale';?>">
+  
+   
+        <tr id="<?php echo trim($infos['ueTelecom3Resultats'], ' ');?>"> 
+ 
     <td><strong>UE Télécommunications 3</strong></td>
     <td></td>
     <td></td>
@@ -925,10 +929,8 @@ div.green {
    buildInput("", $editable, 'fhls', $infos['fhls'])?></td>
     <td></td>
   </tr>
-
-
-      
- <tr class="<?php echo $infos['ueTraitementSignal3Resultats'] == 'AJ' ?  'lignecoloree':'lignenormale';?>" >
+  
+        <tr id="<?php echo trim($infos['ueTraitementSignal3Resultats'], ' ');?>"> 
     <td><strong>UE Traitement du signal 3</strong></td>
     <td></td>
     <td></td>
@@ -939,8 +941,13 @@ div.green {
     <td><strong><?php $editable=$paramAction=="editer1";
    buildInput("", $editable, 'ueTraitementSignal3Resultats', $infos['ueTraitementSignal3Resultats'])
    ?></strong></td>
+    </tr>
+  
+  
     
-  </tr>
+
+
+
  <tr>
     <td>Codes Détecteurs et Correcteur d'érreur</td>
     <td><?php $editable=$paramAction=="editer1";
@@ -970,7 +977,7 @@ div.green {
     <td></td>
     
   </tr>
-  <tr class="<?php echo $infos['ueProjetThematiqueResultat'] == 'AJ' ?  'lignecoloree':'lignenormale';?>">
+  <tr  id="<?php echo trim($infos['ueProjetThematiqueResultat'], ' ');?>">
     <td><strong>UE Projet Thématique</strong></td>
     <td></td>
     <td></td>
@@ -997,7 +1004,7 @@ div.green {
     <td></td>
   </tr>
 
-  <tr class="<?php echo $infos['ueLanguesVivante8Resultat'] == 'AJ' ?  'lignecoloree':'lignenormale';?>">
+  <tr id="<?php echo trim($infos['ueLanguesVivante8Resultat'], ' ');?>">
     <td><strong>UE Langues vivantes S2</strong></td>
     <td></td>
     <td></td>
@@ -1051,7 +1058,7 @@ div.green {
     <td></td>
     
   </tr>
-  <tr class="<?php echo $infos['ueCultureEntreprise8Resultat'] == 'AJ' ?  'lignecoloree':'lignenormale';?>">
+  <tr  id="<?php echo trim($infos['ueCultureEntreprise8Resultat'], ' ');?>">
     <td><strong>UE Culture d'entreprise 2</strong></td>
     <td></td>
     <td></td>
@@ -1109,9 +1116,9 @@ div.green {
   </tr>
   
   
-   
+  
 	
-<tr class="<?php echo $infos['s4Resultat'] == 'AJ' ?  'lignecoloree':'lignenormale';?>">
+<tr id="<?php echo trim($infos['s4Resultat'], ' ');?>">
     <td><strong>Moyenne semestre S2</strong></td>
     <td></td>
     <td></td>
@@ -1129,14 +1136,36 @@ div.green {
  
   <table class="table">
     <thead>
-    <tr class="<?php echo $infos['anglaisResultats'] == 'AJ' ?  'lignecoloree':'lignenormale';?>">
+  
+    <tr  id="<?php echo trim($infos['anglaisResultats'], ' ');?>"> 
     <td><strong>Niveau anglais </strong></td>
       <td></td>
        <td><strong><?php $editable=$paramAction=="editer1";
    buildInput("", $editable, 'anglaisResultats', $infos['anglaisResultats'])
    ?></strong></td>
   </tr>
-<tr  class="<?php echo $infos['anneeResultat'] == 'AJ' ? 'lignecoloree':'lignenormale' ;?>">
+
+  
+
+<script >
+
+$(document).ready(function(){ 
+
+  var elmsADM = document.querySelectorAll("[id='ADM']");
+  var elmsAJ = document.querySelectorAll("[id='AJ']");
+  for(var i = 0; i < elmsADM.length; i++) 
+    elmsADM[i].style.backgroundColor ='#b1cbbb';
+  
+  for(var j = 0; j < elmsAJ.length; j++) 
+    elmsAJ[j].style.backgroundColor ='#eea29a';
+}) 
+
+
+
+</script>
+
+<tr id="<?php echo trim($infos['anneeResultat'], ' ');?>">
+
     <td><strong>Moyenne générale </strong></td>
       <td><strong><?php $editable=$paramAction=="editer1";
    buildInput("", $editable, 'anneeMoyenne', $infos['anneeMoyenne'])
@@ -1149,54 +1178,6 @@ div.green {
   </table>
   
 
-  <p class="S"> Session TOEIC </p> 
-
-  <body>
-
- 
-<table class="table">
-  
-    <tr>
-      <th> </th>
-      <th>Resultats</th>
-    </tr>
-  
-  <tbody>
-  
-    <tr>
-      <td>Test de TOEIC</td>
-      <td><?php $editable=$paramAction=="editer1";
- buildInput("", $editable, 'anneeTOEIC', $infos['anneeTOEIC'])?></td>
-      
-    </tr>      
-    <tr >
-      <td>TOEICblanc1</td>
-      <td><?php $editable=$paramAction=="editer1";
- buildInput("", $editable, 'TOEICblanc1', $infos['TOEICblanc1'])?></td>
-      
-    </tr>
-    <tr >
-      <td>TOEICblanc2</td>
-      <td><?php $editable=$paramAction=="editer1";
- buildInput("", $editable, 'TOEICblanc2', $infos['TOEICblanc2'])?></td>
-      
-    </tr>
-    <tr >
-      <td>TOEICofficiel</td>
-      <td><?php $editable=$paramAction=="editer1";
- buildInput("", $editable, 'TOEICofficiel', $infos['TOEICofficiel'])?></td>
-    
-    </tr>
-    <tr >
-      <td><strong>Niveau anglais </strong></td>
-      <td><strong><?php $editable=$paramAction=="editer1";
- buildInput("", $editable, 'anglaisResultats', $infos['anglaisResultats'])
- ?></strong></td>
-      
-    </tr>
-    
-  </tbody>
-</table>
 
 
 </body>
