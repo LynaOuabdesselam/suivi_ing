@@ -380,18 +380,18 @@
                                         </div>
                                     </div>
                                     <hr>
-                                    <div class="row">
+                                    <!-- <div class="row">
                                         <div class="col-sm-12">
                                             <?php
                                                 if (!$editable)
-                                                    echo "<input type='button'  onclick='editer(1)' value='Edit' class='btn btn-info pull-left'/>";
+                                                    echo "<input type='button'  onclick='editer1()' value='Edit' class='btn btn-info pull-left'/>";
                                                 else {
                                                     echo " <input type='button'   onclick='valider1()' value='Valider' class='btn btn-primary'/>";
                                                     echo " <input type='button'   onclick='annuler()' value='Annuler' class='btn btn-danger'/>";
                                                     }
                                             ?>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>
@@ -410,6 +410,7 @@
       <h3>Menu 1</h3>
     </div>
     <div id="TOEIC" class="tab-pane fade">
+
 <!-- ******************************************************************************************** -->
 <div class="container bootstrap snippet">
         <div class="row">

@@ -29,11 +29,11 @@
             <div class="modal-dialog modal-lg">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h4 class="modal-title">attention !</h4>
+                  <h4 class="modal-title">Attention !</h4>
                   <button type="button" class="close" data-dismiss="modal">&times;</button> 
                 </div>
                 <div class="modal-body">
-                  <p>Cette action suprimera les données sauvegardées en base de donneés.</p>
+                  <p>Cette action peut supprimer des données sauvegardées en base de donneés.</p>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-default okay-button" data-dismiss="modal">OUI</button>

@@ -1,4 +1,42 @@
 <?php require_once "controllerUserData.php"; ?>
+<style>
+body{
+  background-image : url("https://galilee.univ-paris13.fr/wp-content/uploads/36.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+/* Float four columns side by side */
+.column {
+  float: left;
+  width: 30%;
+  padding: 0 15px;
+  box-sizing: border-box;
+}
+
+/* Responsive columns */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+
+/* Style the counter cards */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  text-align: center;
+  background-color: #343A40;
+  /* opacity : 1; */
+}
+.card h3{
+  color : #fff;
+}
+</style>
+
+
+
 <?php 
 $email = $_SESSION['email'];
 $password = $_SESSION['password'];
@@ -33,15 +71,47 @@ if($email != false && $password != false){
      }
     }
 ?>
-  <div class="col-sm-4">
-    <!-- <div class="card text-white bg-primary mb-3"> -->
-      <div class="card-header">
-        <div class="col-sm-6">
-          <h4>SUIVI INGENIEUR</h4>
-        </div>
-      </div>
-  <!-- </div> -->
+<br>
+<div class="container">
+  <div class="col-sm-6">
+      <h3>Suivi en ligne d'élèves ingénieur</h3>
   </div>
+</div>
+<br>
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+<!-- ________________________________________ -->
+
+<div class="row d-flex justify-content-center">
+  <div class="column">
+    <a href="index.php?page=listeStudents">
+      <div class="card">
+        <h3>Télécommunication 1</h3>
+      </div>
+    </a>
+  </div>
+
+  <div class="column">
+    <a href="index.php?page=listeStudents">
+      <div class="card">
+        <h3>Télécommunication 2</h3>
+      </div>
+    </a>
+  </div>
+  
+  <div class="column">
+    <a href="index.php?page=listeStudents">
+        <div class="card">
+        <h3>Télécommunication 3</h3>
+      </div>
+    </a>
+  </div>
+</div>
+<!-- ________________________________________ -->
   <div class="col-md-9">
       <div class="content">
           <?php 
