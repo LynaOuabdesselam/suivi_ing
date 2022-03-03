@@ -21,23 +21,24 @@
     <script src="js/fontawesome.min.js"></script>
     <script src="js/script.js"></script>  
     
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
     <style>
       @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
       nav{
-          padding-left: 50px!important; 
+          padding-left: 50px!important;
           padding-right: 50px!important;
-          font-family: 'Poppins', sans-serif;
+          font-family: 'Poppins', sans-serif!important;
       } 
       nav a.navbar-brand{
-          color: black;
-          font-size: 20px!important;
-          font-weight: 500;
+          color: black!important;
+          font-size: 20px!important!important;
+          font-weight: 500;!important;
       }
       nav a{
-        color: #fff;
-        padding: 15px;;
+        color: #fff!important;
+        padding: 15px!important;
       }
       a{
         color: black;
@@ -49,7 +50,7 @@
         cursor: mouse;
       }
       ul.dropdown-menu a{
-        color: black;
+        color: black!important;
       }
       h1{
         position: absolute;
@@ -70,11 +71,11 @@
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
               <div class="navbar-header">
-                <a class="navbar-brand" href="index.php">
-                <img class="login" src="css/galilee.png" href="index.php" >
+                <a class="navbar-brand" href="index.php?page=home">
+                <img class="login" src="css/galilee.png" href="index.php?page=home" >
                 </a>
               </div>
-              <ul class="nav navbar-inverse">
+              <ul class="nav navbar-inverse" style="background-color:#343A40;">
                 <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" 
                       href="#"> <i class="fa fa-users"></i> Étudiants </a>
                   <ul class="dropdown-menu">

@@ -1,6 +1,6 @@
 <?php
- //require_once "createTablenew.php";
- //require_once "readCSV.php";
+//  require_once "createTablenew.php";
+//  require_once "readCSVnew1.php";
     function GetRequest($nomvar,$defaut=""){
 
         if (isset($_REQUEST[$nomvar]))
@@ -17,7 +17,7 @@
         $objetPdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         return $objetPdo;
     }
-    $idEtudiant = GetRequest('idEtudiant',11925709); //Si pas de num etudiant en parametre on fixe un num par defaut
+    $idEtudiant = GetRequest('idEtudiant',11930377); //Si pas de num etudiant en parametre on fixe un num par defaut
     $paramAction=GetRequest("paramAction","");
 
     function getInfosEtudiant($idEtudiant){
@@ -68,10 +68,9 @@
     {
         if ($objetPdo==null)
             $objetPdo = connectToBD();
+            $i = 0;
         $sql = "insert into  $table (  ";
-        $sqlVal = " values ( ";
-        $i = 0;
-
+        $sqlVal = " values ( ";        
         foreach ($new_info as $key => $val) {
             if ($to_exclude && array_search($key ,$to_exclude)!==false)
                 continue;
@@ -369,9 +368,17 @@
             document.form1.submit();
 
             }
+
+            function putGreenBackground() {
+                $('td').each(
+                    function(i){
+                        if ($(this).value == "ADM"){
+                            $('tr:eq(' + (i-1) + ')').addClass('rowBeforeControlVariable');
+                        }
+                    });
+            }
     </script>
 </head>
-
 
 
 <?php
@@ -381,12 +388,20 @@
 <head>
 <style>
 
+    .lignecoloree {
+        background-color:#ff6f69;
+    }
+    .lignenormale {
+        background-color:#96ceb4 ;
+    }
+ 
+           
 p.solid {
 border-style: solid;
 border-width: 5px;
  color: black;
   text-align: center;
-  width:50%
+  width:100%
 }
 p.groove {
     
@@ -425,701 +440,766 @@ div.green {
 
 </style>
 </head>
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+</head>
+
+
 <body>
 
-<div class="container bootstrap snippet">
-
-    <p class="solid">RELEVE DE NOTES ET RESULTATS</p>
-    <p class="groove" >
-    <br>
-    <?php echo " NOM : ".$editable=$paramAction=="editer1";
-    buildInput("", $editable, 'nom', $infos['nom'], 5,5,"class='form-control'")
-    ?>
-
-    <?php  echo "N°Etudiant : ".$idEtudiant?>
-    </br>
-    <br>
-    <?php echo " PRENOM : ".$editable=$paramAction=="editer1";
-    buildInput("", $editable, 'prenom', $infos['prenom'], 5,5,"class='form-control'")
-    ?>
-        
-    </br>
-    </p>
 
 
-    <p class="S"> Notes et résultats semestre S1 </p>  
+<p class="solid">RELEVE DE NOTES ET RESULTATS</p>
+<p class="groove" >
+<br>
+   <?php echo " NOM : ".$editable=$paramAction=="editer1";
+   buildInput("", $editable, 'nom', $infos['nom'])
+   ?>
 
-    </body>
+<?php echo " PRENOM : ".$editable=$paramAction=="editer1";
+   buildInput("", $editable, 'prenom', $infos['prenom'])
+  ?>
+</br>
 
+<br>
+  
+   <?php  echo "N°Etudiant : ".$idEtudiant?>  
+</br>
+</p>
+
+
+<p class="S"> Notes et résultats semestre S1 </p>  
+
+
+  
+  <table class="table">
+    <thead>
+  
+  
+  
+  <tr>
+    <th></th>
+    <th>Coeficient</th>
+    <th>Note TP </th>
+    <th>Note Partiel</th>
+    <th>Note Final </th>
+    <th>Resultats</th>
     
-    <table>
-    <tr>
-        <th></th>
-        <th>Coeficient</th>
-        <th>Note TP </th>
-        <th>Note Partiel</th>
-        <th>Note Final </th>
-        <th>Resultats</th>
-        
-    </tr>
-    
-    
-        <td><strong>U.E Outils Informatique 2</strong></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td><strong><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'ueOutilsInformatiques2', $infos['ueOutilsInformatiques2'])
-    ?></strong></td>
-        <td><strong><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'ueOutilsInformatiques2Reultats', $infos['ueOutilsInformatiques2Reultats'])
-    ?></strong></td>
-    </tr>
-    <tr>
-        <td>Base de Données</td>
-        <td><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'bddCoef', $infos['bddCoef'])?></td>
-        <td><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'bddTP', $infos['bddTP'])?>
-        </td>
-        <td></td>
-        <td> 
-        <?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'bdd', $infos['bdd'])?></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>Systèmes d'Exploitation Multitaches</td>
-        <td><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'semCoef', $infos['semCoef'])?></td>
-        <td><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'semTP', $infos['semTP'])?>
-        </td>
-        <td><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'semP', $infos['semP'])?></td>
-        <td> 
-        <?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'bdd', $infos['bdd'])?></td>
-        <td></td>
-        
-    </tr>
-
-    <tr>
-        <td><strong>UE Télécommuncations 2</strong></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td><strong><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'ueTelecom2', $infos['ueTelecom2'])
-    ?></strong></td>
-        <td><strong><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'ueTelecom2Resultats', $infos['ueTelecom2Resultats'])
-    ?></strong></td>
-    </tr>
-    <tr>
-        <td>Antennes</td>
-        <td><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'antennesCoef', $infos['antennesCoef'])?></td>
-        <td><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'antennesTP', $infos['antennesTP'])?>
-        </td>
-        <td><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'antennesP', $infos['antennesP'])?></td>
-        <td> 
-        <?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'antennes', $infos['antennes'])?></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>Théorie de l'Information</td>
-        <td><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'theorieInofrmationCoef', $infos['theorieInofrmationCoef'])?></td>
-        <td>
-        </td>
-        <td><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'theorieInofrmationP', $infos['theorieInofrmationP'])?></td>
-        <td> 
-        <?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'theorieInofrmation', $infos['theorieInofrmation'])?></td>
-        <td></td>
-        
-    </tr>
-    <tr>
-        <td>Télécommunications optiques</td>
-        <td><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'tOptCoef', $infos['tOptCoef'])?></td>
-        <td><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'tOptTP', $infos['tOptTP'])?>
-        </td>
-        <td><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'tOptP', $infos['tOptP'])?></td>
-        <td> 
-        <?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'tOpt', $infos['tOpt'])?></td>
-        <td></td>
-    </tr>
-
-
-    
-    <tr>
-        <td><strong>UE Traitement du signal 2</strong></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td><strong><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'ueTraitementSignal2', $infos['ueTraitementSignal2'])
-    ?></strong></td>
-        <td><strong><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'ueTraitementSignal2Resultats', $infos['ueTraitementSignal2Resultats'])
-    ?></strong></td>
-    </tr>
-    <tr>
-        <td>Traitement Numérique du systéme </td>
-        <td><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'tnsCoef', $infos['tnsCoef'])?></td>
-        <td><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'tnsTP', $infos['tnsTP'])?>
-        </td>
-        <td><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'tnsP', $infos['tnsP'])?></td>
-        <td> 
-        <?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'tns', $infos['tns'])?></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>Théories des Signaux Aléatoires </td>
-        <td><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'tsaCoef', $infos['tsaCoef'])?></td>
-        <td>
-        </td>
-        <td><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'tsaP', $infos['tsaP'])?></td>
-        <td> 
-        <?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'tsa', $infos['tsa'])?></td>
-        <td></td>
-        
-        <tr>
-        <td><strong>UE Langues vivantes S1</strong></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td><strong><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'ueLanguesVivante1', $infos['ueLanguesVivante1'])
-    ?></strong></td>
-        <td><strong><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'ueLanguesVivante1Resultats', $infos['ueLanguesVivante1Resultat'])
-    ?></strong></td>
-    </tr>
-    <tr>
-        <td>Anglais 1 </td>
-        <td><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'anglaisCoef', $infos['anglaisCoef'])?></td>
-        <td>
-        </td>
-        <td><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'anglaisP', $infos['anglaisP'])?></td>
-        <td> 
-        <?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'anglais', $infos['anglais'])?></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>Test TOEIC</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td> 
-        <?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'anneeTOEIC', $infos['anneeTOEIC'])?></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>TOEICblanc1</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'TOEICblanc1', $infos['TOEICblanc1'])?> </td>
-        <td></td>
-        
-    </tr>
-    <tr>
-        <td>TOEICblanc2</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'TOEICblanc2', $infos['TOEICblanc2'])?></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>TOEICofficiel</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'TOEICofficiel', $infos['TOEICofficiel'])?></td>
-        <td></td>
-    </tr>
-    <tr>
-
-
-    <tr>
-        <td><strong>Culture d'entreprise 1</strong></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td><strong><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'ueCultureEntreprise', $infos['ueCultureEntreprise'])
-    ?></strong></td>
-        <td><strong><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'ueCultureEntrepriseResultat', $infos['ueCultureEntrepriseResultat'])
-    ?></strong></td>
-    </tr>
-    <tr>
-        <td>Ethique </td>
-        <td><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'ethiqueCoef', $infos['ethiqueCoef'])?></td>
-        <td>
-        </td>
-        <td><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'ethiqueP', $infos['ethiqueP'])?></td>
-        <td> 
-        <?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'ethique', $infos['ethique'])?></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>Initiation à la sociologie </td>
-        <td><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'introSociologieCoef', $infos['introSociologieCoef'])?></td>
-        <td>
-        </td>
-        <td><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'introSociologieP', $infos['introSociologieP'])?></td>
-        <td> 
-        <?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'introSociologie', $infos['introSociologie'])?></td>
-        <td></td>
-        
-    </tr>
-    <tr>
-        <td>Introduction analyse des données</td>
-        <td><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'tOptCoef', $infos['tOptCoef'])?></td>
-        <td><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'introAnalyseDonneesTP', $infos['introAnalyseDonneesTP'])?>
-        </td>
-        <td></td>
-        <td> 
-        <?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'introAnalyseDonnees', $infos['introAnalyseDonnees'])?></td>
-        <td></td>
-    </tr>
-
-
-    <tr>
-        <td><strong>Niveau Anglais</strong></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td><strong><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'anglais', $infos['anglais'])
-    ?></strong></</td>
-        <td><strong><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'anglaisResultats', $infos['anglaisResultats'])
-    ?></strong></td>
-    </tr>
-
-
-    <tr>
-        <td><strong>Moyenne semestre S1</strong></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td><strong><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 's3Moyenne', $infos['s3Moyenne'])
-    ?></strong></td>
-        <td><strong><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 's3Resultat', $infos['s3Resultat'])
-    ?></strong></td>
-    </tr>
-    </table>
-
-
-    <body>
-    <p class="S"> Notes et résultats semestre S2 </p> 
-
-    </body>
-    <table>
-    <table>
-    <tr>
-        <th></th>
-        <th>Coeficient</th>
-        <th>Note TP </th>
-        <th>Note Partiel</th>
-        <th>Note Final </th>
-        <th>Resultats</th>
-        
-    </tr>
-    <tr>
-        <td><strong>UE Outils informatiques</strong></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td><strong><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'ueOutilsInformatiques3', $infos['ueOutilsInformatiques3'])
-    ?></strong></td>
-        <td><strong><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'ueOutilsInformatiques3Resultats', $infos['ueOutilsInformatiques3Resultats'])
-    ?></strong></td>
-        
-    </tr>
-    <tr>
-        <td>Language Java et programmation</td>
-        <td><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'javaCoef', $infos['javaCoef'])?></td>
-        <td><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'javaTP', $infos['javaTP'])?>
-        </td>
-        <td><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'javaProjet', $infos['javaProjet'])?></td>
-        <td> 
-        <?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'java', $infos['java'])?></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>WEB 2 </td>
-        <td><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'introSociologieCoef', $infos['introSociologieCoef'])?></td>
-    
-        <td><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'web2TP', $infos['web2TP'])?></td>
-    
+  </tr>
+  </thead>
+    <tbody>
+    <tr class="<?php echo $infos['ueOutilsInformatiques2Reultats'] == 'ADM' ? 'lignenormale': 'lignecoloree';?>">
+    <td><strong>U.E Outils Informatique 2</strong></td>
     <td></td>
-        <td> 
-        <?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'web2', $infos['web2'])?></td>
-        <td></td>
-        
-    </tr>
-
-
-    <tr>
-        <td><strong>UE Réseaux 2</strong></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td><strong><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'ueReseaux2Resultat', $infos['ueReseaux2Resultat'])
-    ?></strong></td>
-        
-    </tr>
-    <tr>
-        <td>Modélisation Markovienne</td>
-        <td><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'modelMarkovCoef', $infos['modelMarkovCoef'])?></td>
-        <td>
-        </td>
-        <td><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'modelMarkovP', $infos['modelMarkovP'])?></td>
-        <td> 
-        <?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'modelMarkov', $infos['modelMarkov'])?></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>Routage sur Internet </td>
-        <td><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'routageCoef', $infos['routageCoef'])?></td>
-    
-        <td><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'routageTP', $infos['routageTP'])?></td>
-    
     <td></td>
-        <td> 
-        <?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'routage', $infos['routage'])?></td>
-        <td></td>
-        
-    </tr>
-    <tr>
-        <td>Réseaux de transmission de données</td>
-        <td><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'rtd2Coef', $infos['rtd2Coef'])?></td>
-        <td><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'rtd2TP', $infos['rtd2TP'])?>
-        </td>
-        <td><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'irtd2P', $infos['rtd2P'])?></td>
-        <td> 
-        <?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'rtd2', $infos['rtd2'])?></td>
-        <td></td>
-    </tr>
-
-    
-    <tr>
-        <td><strong>UE Télécommunications 3</strong></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td><strong><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'ueTelecom3', $infos['ueTelecom3'])
-    ?></strong></td>
-        <td><strong><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'ueTelecom3Resultats', $infos['ueTelecom3Resultats'])
-    ?></strong></td>
-        
-    </tr>
-    <tr>
-        <td>Architecture des réseaux</td>
-        <td><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'artCoef', $infos['artCoef'])?></td>
-        <td>
-        </td>
-        <td><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'artP', $infos['artP'])?></td>
-        <td> 
-        <?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'art', $infos['art'])?></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>Communications Numérique1 </td>
-        <td><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'commNumCoef', $infos['commNumCoef'])?></td>
-    
-        <td><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'commNumTP', $infos['commNumTP'])?></td>
+    <td></td>
+    <td><strong><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'ueOutilsInformatiques2', $infos['ueOutilsInformatiques2'])
+   ?></strong></td>
+    <td><strong><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'ueOutilsInformatiques2Reultats', $infos['ueOutilsInformatiques2Reultats'])
+   ?></strong></td>
+  </tr>
+ <tr>
+    <td>Base de Données</td>
     <td><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'commNumP2', $infos['commNumP2'])?></td>
-    
-        <td> 
-        <?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'commNum', $infos['commNum'])?></td>
-        <td></td>
-        
-    </tr>
-    <tr>
-        <td>Faisceaux Hertziens</td>
-        <td><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'fhlsCoef', $infos['fhlsCoef'])?></td>
-        <td>
-        </td>
-        <td><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'fhlsP', $infos['fhlsP'])?></td>
-        <td> 
-        <?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'fhls', $infos['fhls'])?></td>
-        <td></td>
-    </tr>
-
-
-        
-    <tr>
-        <td><strong>UE Traitement du signal</strong></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td><strong><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'ueTraitementSignal3', $infos['ueTraitementSignal3'])
-    ?></strong></td>
-        <td><strong><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'ueTraitementSignal3Resultats', $infos['ueTraitementSignal3Resultats'])
-    ?></strong></td>
-        
-    </tr>
-    <tr>
-        <td>Codes Détecteurs et Correcteur d'érreur</td>
-        <td><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'cdceCoef', $infos['cdceCoef'])?></td>
-        <td><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'cdceTP', $infos['cdceTP'])?>
-        </td>
-        <td><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'cdceP', $infos['cdceP'])?></td>
-        <td> 
-        <?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'cdce', $infos['cdce'])?></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>Data Signal Processor </td>
-        <td><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'dspCoef', $infos['dspCoef'])?></td>
-    
-        <td><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'commNumTP', $infos['commNumTP'])?></td>
+   buildInput("", $editable, 'bddCoef', $infos['bddCoef'])?></td>
+    <td><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'bddTP', $infos['bddTP'])?>
+    </td>
+    <td></td>
+    <td> 
+     <?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'bdd', $infos['bdd'])?></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Systèmes d'Exploitation Multitaches</td>
+    <td><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'semCoef', $infos['semCoef'])?></td>
+    <td><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'semTP', $infos['semTP'])?>
+    </td>
+    <td><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'semP', $infos['semP'])?></td>
+    <td> 
+     <?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'bdd', $infos['bdd'])?></td>
     <td></td>
     
-        <td> 
-        <?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'dsp', $infos['dsp'])?></td>
-        <td></td>
-        
-    </tr>
-    <tr>
-        <td><strong>UE Projet Thématique</strong></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td><strong><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'ueProjetThematique', $infos['ueProjetThematique'])
-    ?></strong></td>
-        <td><strong><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'ueProjetThematiqueResultat', $infos['ueProjetThematiqueResultat'])
-    ?></strong></td>
-        
-    </tr>
-    <tr>
-        <td>Projet thématique</td>
-        <td></td>
-        <td><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'TPProjet', $infos['TPProjet'])?>
-        </td>
-        <td><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'rapportProjet', $infos['rapportProjet'])?></td>
-        <td> 
-        <?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'projetThematique', $infos['projetThematique'])?></td>
-        <td></td>
-    </tr>
+  </tr>
 
-    <tr>
-        <td><strong>UE Langues vivantes S2</strong></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td><strong><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'ueLanguesVivante8', $infos['ueLanguesVivante8'])
-    ?></strong></td>
-        <td><strong><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'ueLanguesVivante8Resultat', $infos['ueLanguesVivante8Resultat'])
-    ?></strong></td>
-        
-    </tr>
-    <tr>
-        <td>Anglais 2 </td>
-        <td></td>
-        <td>
-        </td>
-        <td><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'anglais1CC', $infos['anglais1CC'])?></td>
-        <td> 
-        <?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'anglais1', $infos['anglais1'])?></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>Anglais renforcé</td>
-        <td><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'anglaisRenforceCoef', $infos['anglaisRenforceCoef'])?></td>
-    
-        <td></td>
+  <tr class="<?php echo $infos['ueTraitementSignal2Resultats'] == 'AJ' ?  'lignecoloree':'lignenormale';?>">
+    <td><strong>UE Télécommuncations 2</strong></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td><strong><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'ueTelecom2', $infos['ueTelecom2'])
+   ?></strong></td>
+    <td><strong><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'ueTelecom2Resultats', $infos['ueTelecom2Resultats'])
+   ?></strong></td>
+  </tr>
+ <tr>
+    <td>Antennes</td>
+    <td><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'antennesCoef', $infos['antennesCoef'])?></td>
+    <td><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'antennesTP', $infos['antennesTP'])?>
+    </td>
+    <td><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'antennesP', $infos['antennesP'])?></td>
+    <td> 
+     <?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'antennes', $infos['antennes'])?></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Théorie de l'Information</td>
+    <td><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'theorieInofrmationCoef', $infos['theorieInofrmationCoef'])?></td>
+    <td>
+    </td>
+    <td><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'theorieInofrmationP', $infos['theorieInofrmationP'])?></td>
+    <td> 
+     <?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'theorieInofrmation', $infos['theorieInofrmation'])?></td>
     <td></td>
     
-        <td> 
-        <?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'anglaisRenforceCC', $infos['anglaisRenforceCC'])?></td>
-        <td></td>
-        
-    </tr>
-
-    <tr>
-        <td><strong>UE Culture d'entreprise 2</strong></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td><strong><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'ueCultureEntreprise8', $infos['ueCultureEntreprise8'])
-    ?></strong></td>
-        <td><strong><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'ueCultureEntreprise8Resultat', $infos['ueCultureEntreprise8Resultat'])
-    ?></strong></td>
-        
-    </tr>
-    <tr>
-        <td>Projet Création d'entreprise </td>
-        <td><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'projetCreationEntrepriseCoef', $infos['projetCreationEntrepriseCoef'])?></td>
-        <td>
-        </td>
-        <td><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'projetCreationEntrepriseCC', $infos['projetCreationEntrepriseCC'])?></td>
-        <td> 
-        <?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'projetCreationEntreprise', $infos['projetCreationEntreprise'])?></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>Qualité Sécurité Environnement</td>
-        <td><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'qseCoef', $infos['qseCoef'])?></td>
-    
-        <td></td>
+  </tr>
+  <tr>
+    <td>Télécommunications optiques</td>
     <td><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'qseP', $infos['qseP'])?></td>
-    
-        <td> 
-        <?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'qse', $infos['qse'])?></td>
-        <td></td>
-        
-    </tr>
-    <tr>
-        <td>Sécurité santé au travail</td>
-        <td><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'santeSecuriteTravailCoef', $infos['santeSecuriteTravailCoef'])?></td>
-    
-        <td></td>
+   buildInput("", $editable, 'tOptCoef', $infos['tOptCoef'])?></td>
     <td><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'santeSecuriteTravailP', $infos['santeSecuriteTravailP'])?></td>
+   buildInput("", $editable, 'tOptTP', $infos['tOptTP'])?>
+    </td>
+    <td><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'tOptP', $infos['tOptP'])?></td>
+    <td> 
+     <?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'tOpt', $infos['tOpt'])?></td>
+    <td></td>
+  </tr>
+
+
+   
+  <tr class="<?php echo $infos['ueTraitementSignal2Resultats'] == 'AJ' ?  'lignecoloree':'lignenormale';?>">
+    <td><strong>UE Traitement du signal 2</strong></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td><strong><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'ueTraitementSignal2', $infos['ueTraitementSignal2'])
+   ?></strong></td>
+    <td><strong><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'ueTraitementSignal2Resultats', $infos['ueTraitementSignal2Resultats'])
+   ?></strong></td>
+  </tr>
+ <tr>
+    <td>Traitement Numérique du systéme </td>
+    <td><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'tnsCoef', $infos['tnsCoef'])?></td>
+    <td><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'tnsTP', $infos['tnsTP'])?>
+    </td>
+    <td><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'tnsP', $infos['tnsP'])?></td>
+    <td> 
+     <?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'tns', $infos['tns'])?></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Théories des Signaux Aléatoires </td>
+    <td><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'tsaCoef', $infos['tsaCoef'])?></td>
+    <td>
+    </td>
+    <td><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'tsaP', $infos['tsaP'])?></td>
+    <td> 
+     <?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'tsa', $infos['tsa'])?></td>
+    <td></td>
     
-        <td> 
-        <?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'santeSecuriteTravail', $infos['santeSecuriteTravail'])?></td>
-        <td></td>
-        
-    </tr>
+    <tr class="<?php echo $infos['ueLanguesVivante1Resultat'] == 'AJ' ?  'lignecoloree':'lignenormale';?>">
+    <td><strong>UE Langues vivantes S1</strong></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td><strong><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'ueLanguesVivante1', $infos['ueLanguesVivante1'])
+   ?></strong></td>
+    <td><strong><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'ueLanguesVivante1Resultats', $infos['ueLanguesVivante1Resultat'])
+   ?></strong></td>
+  </tr>
+ <tr>
+    <td>Anglais 1 </td>
+    <td><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'anglaisCoef', $infos['anglaisCoef'])?></td>
+    <td>
+    </td>
+    <td><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'anglaisP', $infos['anglaisP'])?></td>
+    <td> 
+     <?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'anglais', $infos['anglais'])?></td>
+    <td></td>
+  </tr>
+  
+ 
+
+
+  <tr class="<?php echo $infos['ueCultureEntrepriseResultat'] == 'AJ' ?  'lignecoloree':'lignenormale';?>">
+    <td><strong> UE Culture d'entreprise 1</strong></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td><strong><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'ueCultureEntreprise', $infos['ueCultureEntreprise'])
+   ?></strong></td>
+    <td><strong><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'ueCultureEntrepriseResultat', $infos['ueCultureEntrepriseResultat'])
+   ?></strong></td>
+  </tr>
+ <tr>
+    <td>Ethique </td>
+    <td><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'ethiqueCoef', $infos['ethiqueCoef'])?></td>
+    <td>
+    </td>
+    <td><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'ethiqueP', $infos['ethiqueP'])?></td>
+    <td> 
+     <?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'ethique', $infos['ethique'])?></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Initiation à la sociologie </td>
+    <td><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'introSociologieCoef', $infos['introSociologieCoef'])?></td>
+    <td>
+    </td>
+    <td><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'introSociologieP', $infos['introSociologieP'])?></td>
+    <td> 
+     <?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'introSociologie', $infos['introSociologie'])?></td>
+    <td></td>
+    
+  </tr>
+  <tr>
+    <td>Introduction analyse des données</td>
+    <td><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'tOptCoef', $infos['tOptCoef'])?></td>
+    <td><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'introAnalyseDonneesTP', $infos['introAnalyseDonneesTP'])?>
+    </td>
+    <td></td>
+    <td> 
+     <?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'introAnalyseDonnees', $infos['introAnalyseDonnees'])?></td>
+    <td></td>
+  </tr>
+
+
+  <tr class="<?php echo $infos['s3Resultat'] == 'ADM' ? 'lignenormale': 'lignecoloree';?>">
+    <td><strong>Moyenne semestre S1</strong></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td><strong><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 's3Moyenne', $infos['s3Moyenne'])
+   ?></strong></td>
+    <td><strong><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 's3Resultat', $infos['s3Resultat'])
+   ?></strong></td>
+  </tr>
+  </tbody>
+  </table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<body>
+<p class="S"> Notes et résultats semestre S2 </p> 
+
+</body>
+
+
+  
+  <table class="table">
+    <thead>
+
+
+  <tr>
+    <th></th>
+    <th>Coeficient</th>
+    <th>Note TP </th>
+    <th>Note Partiel</th>
+    <th>Note Final </th>
+    <th>Resultats</th>
+    
+  </tr>
+  </thead>
+    <tbody>
+<tr  class="<?php echo $infos['ueOutilsInformatiques3Resultats'] == 'AJ' ? 'lignecoloree': 'lignenormale';?>">
+    <td><strong>UE Outils informatiques</strong></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td><strong><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'ueOutilsInformatiques3Resultats', $infos['ueOutilsInformatiques3'])
+   ?></strong></td>
+    <td><strong><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'ueOutilsInformatiques3Resultats', $infos['ueOutilsInformatiques3Resultats'])
+   ?></strong></td>
+    
+  </tr>
+ <tr>
+    <td>Language Java et programmation</td>
+    <td><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'javaCoef', $infos['javaCoef'])?></td>
+    <td><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'javaTP', $infos['javaTP'])?>
+    </td>
+    <td><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'javaProjet', $infos['javaProjet'])?></td>
+    <td> 
+     <?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'java', $infos['java'])?></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>WEB 2 </td>
+    <td><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'introSociologieCoef', $infos['introSociologieCoef'])?></td>
+   
+    <td><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'web2TP', $infos['web2TP'])?></td>
+   
+   <td></td>
+    <td> 
+     <?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'web2', $infos['web2'])?></td>
+    <td></td>
+    
+  </tr>
+
+
+  <tr class="<?php echo $infos['ueReseaux2Resultat'] == 'AJ' ? 'lignecoloree': 'lignenormale';?>">
+    <td><strong>UE Réseaux 2</strong></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td><strong><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'ueReseaux2Resultat', $infos['ueReseaux2Resultat'])
+   ?></strong></td>
+    
+  </tr>
+ <tr>
+    <td>Modélisation Markovienne</td>
+    <td><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'modelMarkovCoef', $infos['modelMarkovCoef'])?></td>
+    <td>
+    </td>
+    <td><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'modelMarkovP', $infos['modelMarkovP'])?></td>
+    <td> 
+     <?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'modelMarkov', $infos['modelMarkov'])?></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Routage sur Internet </td>
+    <td><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'routageCoef', $infos['routageCoef'])?></td>
+   
+    <td><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'routageTP', $infos['routageTP'])?></td>
+   
+   <td></td>
+    <td> 
+     <?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'routage', $infos['routage'])?></td>
+    <td></td>
+    
+  </tr>
+  <tr>
+    <td>Réseaux de transmission de données</td>
+    <td><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'rtd2Coef', $infos['rtd2Coef'])?></td>
+    <td><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'rtd2TP', $infos['rtd2TP'])?>
+    </td>
+    <td><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'irtd2P', $infos['rtd2P'])?></td>
+    <td> 
+     <?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'rtd2', $infos['rtd2'])?></td>
+    <td></td>
+  </tr>
+
+   
+  <tr class="<?php echo $infos['ueTelecom3Resultats'] == 'AJ' ? 'lignecoloree':'lignenormale';?>">
+    <td><strong>UE Télécommunications 3</strong></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td><strong><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'ueTelecom3', $infos['ueTelecom3'])
+   ?></strong></td>
+    <td><strong><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'ueTelecom3Resultats', $infos['ueTelecom3Resultats'])
+   ?></strong></td>
+    
+  </tr>
+ <tr>
+    <td>Architecture des réseaux</td>
+    <td><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'artCoef', $infos['artCoef'])?></td>
+    <td>
+    </td>
+    <td><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'artP', $infos['artP'])?></td>
+    <td> 
+     <?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'art', $infos['art'])?></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Communications Numérique1 </td>
+    <td><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'commNumCoef', $infos['commNumCoef'])?></td>
+   
+    <td><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'commNumTP', $infos['commNumTP'])?></td>
+   <td><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'commNumP2', $infos['commNumP2'])?></td>
+   
+    <td> 
+     <?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'commNum', $infos['commNum'])?></td>
+    <td></td>
+    
+  </tr>
+  <tr>
+    <td>Faisceaux Hertziens</td>
+    <td><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'fhlsCoef', $infos['fhlsCoef'])?></td>
+    <td>
+    </td>
+    <td><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'fhlsP', $infos['fhlsP'])?></td>
+    <td> 
+     <?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'fhls', $infos['fhls'])?></td>
+    <td></td>
+  </tr>
+
+
+      
+ <tr class="<?php echo $infos['ueTraitementSignal3Resultats'] == 'AJ' ?  'lignecoloree':'lignenormale';?>" >
+    <td><strong>UE Traitement du signal 3</strong></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td><strong><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'ueTraitementSignal3', $infos['ueTraitementSignal3'])
+   ?></strong></td>
+    <td><strong><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'ueTraitementSignal3Resultats', $infos['ueTraitementSignal3Resultats'])
+   ?></strong></td>
+    
+  </tr>
+ <tr>
+    <td>Codes Détecteurs et Correcteur d'érreur</td>
+    <td><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'cdceCoef', $infos['cdceCoef'])?></td>
+    <td><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'cdceTP', $infos['cdceTP'])?>
+    </td>
+    <td><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'cdceP', $infos['cdceP'])?></td>
+    <td> 
+     <?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'cdce', $infos['cdce'])?></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Data Signal Processor </td>
+    <td><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'dspCoef', $infos['dspCoef'])?></td>
+   
+    <td><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'commNumTP', $infos['commNumTP'])?></td>
+   <td></td>
+   
+    <td> 
+     <?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'dsp', $infos['dsp'])?></td>
+    <td></td>
+    
+  </tr>
+  <tr class="<?php echo $infos['ueProjetThematiqueResultat'] == 'AJ' ?  'lignecoloree':'lignenormale';?>">
+    <td><strong>UE Projet Thématique</strong></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td><strong><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'ueProjetThematique', $infos['ueProjetThematique'])
+   ?></strong></td>
+    <td><strong><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'ueProjetThematiqueResultat', $infos['ueProjetThematiqueResultat'])
+   ?></strong></td>
+    
+  </tr>
+ <tr>
+    <td>Projet thématique</td>
+    <td></td>
+    <td><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'TPProjet', $infos['TPProjet'])?>
+    </td>
+    <td><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'rapportProjet', $infos['rapportProjet'])?></td>
+    <td> 
+     <?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'projetThematique', $infos['projetThematique'])?></td>
+    <td></td>
+  </tr>
+
+  <tr class="<?php echo $infos['ueLanguesVivante8Resultat'] == 'AJ' ?  'lignecoloree':'lignenormale';?>">
+    <td><strong>UE Langues vivantes S2</strong></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td><strong><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'ueLanguesVivante8', $infos['ueLanguesVivante8'])
+   ?></strong></td>
+    <td><strong><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'ueLanguesVivante8Resultat', $infos['ueLanguesVivante8Resultat'])
+   ?></strong></td>
+    
+  </tr>
+ <tr>
+    <td>Anglais 2 </td>
+    <td></td>
+    <td>
+    </td>
+    <td><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'anglais1CC', $infos['anglais1CC'])?></td>
+    <td> 
+     <?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'anglais1', $infos['anglais1'])?></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Anglais renforcé</td>
+    <td><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'anglaisRenforceCoef', $infos['anglaisRenforceCoef'])?></td>
+   
+    <td></td>
+   <td></td>
+   
+    <td> 
+     <?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'anglaisRenforceCC', $infos['anglaisRenforceCC'])?></td>
+    <td></td>
+    
+  </tr>
+  <tr>
+    <td>Ouverture Linguistique</td>
+    <td><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'ouvertureLinguistiqueCoef', $infos['ouvertureLinguistiqueCoef'])?></td>
+   
+    <td></td>
+   <td><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'ouvertureLinguistiqueCC', $infos['ouvertureLinguistiqueCC'])?></td>
+   
+    <td> 
+     <?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'ouvertureLinguistique', $infos['ouvertureLinguistique'])?></td>
+    <td></td>
+    
+  </tr>
+  <tr class="<?php echo $infos['ueCultureEntreprise8Resultat'] == 'AJ' ?  'lignecoloree':'lignenormale';?>">
+    <td><strong>UE Culture d'entreprise 2</strong></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td><strong><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'ueCultureEntreprise8', $infos['ueCultureEntreprise8'])
+   ?></strong></td>
+    <td><strong><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'ueCultureEntreprise8Resultat', $infos['ueCultureEntreprise8Resultat'])
+   ?></strong></td>
+    
+  </tr>
+ <tr>
+    <td>Projet Création d'entreprise </td>
+    <td><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'projetCreationEntrepriseCoef', $infos['projetCreationEntrepriseCoef'])?></td>
+    <td>
+    </td>
+    <td><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'projetCreationEntrepriseCC', $infos['projetCreationEntrepriseCC'])?></td>
+    <td> 
+     <?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'projetCreationEntreprise', $infos['projetCreationEntreprise'])?></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Qualité Sécurité Environnement</td>
+    <td><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'qseCoef', $infos['qseCoef'])?></td>
+   
+    <td></td>
+   <td><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'qseP', $infos['qseP'])?></td>
+   
+    <td> 
+     <?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'qse', $infos['qse'])?></td>
+    <td></td>
+    
+  </tr>
+   <tr>
+    <td>Sécurité santé au travail</td>
+    <td><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'santeSecuriteTravailCoef', $infos['santeSecuriteTravailCoef'])?></td>
+   
+    <td></td>
+   <td><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'santeSecuriteTravailP', $infos['santeSecuriteTravailP'])?></td>
+   
+    <td> 
+     <?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'santeSecuriteTravail', $infos['santeSecuriteTravail'])?></td>
+    <td></td>
+    
+  </tr>
+  
+  
+   
+	
+<tr class="<?php echo $infos['s4Resultat'] == 'AJ' ?  'lignecoloree':'lignenormale';?>">
+    <td><strong>Moyenne semestre S2</strong></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td ><strong><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 's4Moyenne', $infos['s4Moyenne'])
+   ?></strong> </td>
+    <td><strong><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 's4Resultat', $infos['s4Resultat'])
+   ?></strong></td>
+  </tr>
+  </tbody>
+  </table>         
+  <p class="S"> Résultat global </p> 
+ 
+  <table class="table">
+    <thead>
+    <tr class="<?php echo $infos['anglaisResultats'] == 'AJ' ?  'lignecoloree':'lignenormale';?>">
+    <td><strong>Niveau anglais </strong></td>
+      <td></td>
+       <td><strong><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'anglaisResultats', $infos['anglaisResultats'])
+   ?></strong></td>
+  </tr>
+<tr  class="<?php echo $infos['anneeResultat'] == 'AJ' ? 'lignecoloree':'lignenormale' ;?>">
+    <td><strong>Moyenne générale </strong></td>
+      <td><strong><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'anneeMoyenne', $infos['anneeMoyenne'])
+   ?></strong></</td>
+       <td ><strong><?php $editable=$paramAction=="editer1";
+   buildInput("", $editable, 'anneeResultat', $infos['anneeResultat'])
+   ?></strong></td>
+  </tr>
+  </tbody>
+  </table>
+  
+
+  <p class="S"> Session TOEIC </p> 
+
+  <body>
+
+ 
+<table class="table">
+  
     <tr>
-        <td><strong>Niveau Anglais</strong></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td><strong><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'anglais2', $infos['anglais2'])
-    ?></strong></</td>
-        <td><strong><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 'optionAnglais', $infos['optionAnglais'])
-    ?></strong></td>
+      <th> </th>
+      <th>Resultats</th>
     </tr>
-
-
+  
+  <tbody>
+  
     <tr>
-        <td><strong>Moyenne semestre S2</strong></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td><strong><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 's4Moyenne', $infos['s4Moyenne'])
-    ?></strong></td>
-        <td><strong><?php $editable=$paramAction=="editer1";
-    buildInput("", $editable, 's4Resultat', $infos['s4Resultat'])
-    ?></strong></td>
+      <td>Test de TOEIC</td>
+      <td><?php $editable=$paramAction=="editer1";
+ buildInput("", $editable, 'anneeTOEIC', $infos['anneeTOEIC'])?></td>
+      
+    </tr>      
+    <tr >
+      <td>TOEICblanc1</td>
+      <td><?php $editable=$paramAction=="editer1";
+ buildInput("", $editable, 'TOEICblanc1', $infos['TOEICblanc1'])?></td>
+      
     </tr>
+    <tr >
+      <td>TOEICblanc2</td>
+      <td><?php $editable=$paramAction=="editer1";
+ buildInput("", $editable, 'TOEICblanc2', $infos['TOEICblanc2'])?></td>
+      
+    </tr>
+    <tr >
+      <td>TOEICofficiel</td>
+      <td><?php $editable=$paramAction=="editer1";
+ buildInput("", $editable, 'TOEICofficiel', $infos['TOEICofficiel'])?></td>
+    
+    </tr>
+    <tr >
+      <td><strong>Niveau anglais </strong></td>
+      <td><strong><?php $editable=$paramAction=="editer1";
+ buildInput("", $editable, 'anglaisResultats', $infos['anglaisResultats'])
+ ?></strong></td>
+      
+    </tr>
+    
+  </tbody>
+</table>
 
 
+</body>
+</html>
 
-
-
-
-
-
-    </table>
-</div>
 </body>
