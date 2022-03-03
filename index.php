@@ -69,9 +69,9 @@
       <div class="row">
         <div class="col-sm-12">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container">
-              <div class="navbar-header">
-                <a class="navbar-brand" href="index.php?page=home">
+            <div class="container" style="padding:0px!imprtant;">
+              <div class="navbar-header" style="padding:20px!imprtant;">
+                <a href="index.php?page=home">
                 <img class="login" src="css/galilee.png" href="index.php?page=home" >
                 </a>
               </div>
